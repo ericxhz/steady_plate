@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Steady Plate makes healthy eating for type 2 diabetes risk reduction simple, flexible, and practical."
+      content="What to Eat? makes healthy eating for type 2 diabetes risk reduction simple, flexible, and practical."
     />
     <meta name="theme-color" content="#173d34" />
-    <title>Steady Plate | Eat well, one meal at a time</title>
+    <title>What to Eat? | Healthy meals made simple</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><circle cx=%2232%22 cy=%2232%22 r=%2227%22 fill=%22%23f3bd4d%22/><path d=%22M19 37c10-1 17-7 25-18 2 12-4 24-17 26-4 0-7-3-8-8Z%22 fill=%22%23173d34%22/></svg>" />
     <style>
 :root {
@@ -1056,6 +1056,1016 @@ p {
   border-top: 1px solid rgba(23, 61, 52, 0.17);
 }
 
+.meal-generator {
+  position: relative;
+  padding: 120px max(24px, calc((100% - var(--max-width)) / 2)) 130px;
+  overflow: hidden;
+  background: var(--cream);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.meal-generator::before {
+  position: absolute;
+  top: 74px;
+  right: max(12px, calc((100% - 1380px) / 2));
+  width: 170px;
+  height: 170px;
+  content: "";
+  border: 1px dashed rgba(23, 61, 52, 0.17);
+  border-radius: 50%;
+}
+
+.generator-heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+.generator-heading .kicker {
+  margin-bottom: 14px;
+}
+
+.generator-heading h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.generator-heading > p {
+  max-width: 510px;
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.generator-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(390px, 0.88fr) minmax(0, 1.12fr);
+  align-items: stretch;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 11px 11px 0 var(--leaf-light);
+}
+
+.generator-disclaimer {
+  max-width: 850px;
+  margin: 26px auto 0;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.generator-disclaimer a {
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
+.generator-controls {
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--paper);
+  border-right: 1.5px solid var(--ink);
+}
+
+.generator-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  padding: 6px;
+  margin-bottom: 36px;
+  background: var(--cream-deep);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.generator-tabs button {
+  display: flex;
+  min-height: 54px;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 13px;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1.2;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-radius: 13px;
+  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.generator-tabs button span {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  flex: 0 0 auto;
+  place-items: center;
+  font-size: 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.generator-tabs button[aria-selected="true"] {
+  color: var(--cream);
+  background: var(--ink);
+  box-shadow: 2px 2px 0 var(--tomato);
+}
+
+.generator-panel[hidden] {
+  display: none;
+}
+
+.generator-fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.generator-fieldset legend,
+.ingredient-intro h3 {
+  padding: 0;
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.generator-helper,
+.ingredient-intro p {
+  margin-bottom: 22px;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+.cuisine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cuisine-choice {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  min-height: 86px;
+  column-gap: 11px;
+  align-items: center;
+  padding: 13px 14px;
+  cursor: pointer;
+  border: 1.5px solid rgba(23, 61, 52, 0.25);
+  border-radius: var(--radius-sm);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.cuisine-choice:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.cuisine-choice:has(input:checked) {
+  border-color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: translate(-2px, -2px);
+}
+
+.cuisine-choice:has(input:checked)::after {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  display: grid;
+  width: 19px;
+  height: 19px;
+  place-items: center;
+  color: var(--cream);
+  font-size: 0.66rem;
+  font-weight: 900;
+  content: "✓";
+  background: var(--ink);
+  border-radius: 50%;
+}
+
+.cuisine-choice input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.cuisine-choice input:focus-visible + .cuisine-icon {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--ink);
+}
+
+.cuisine-icon {
+  display: grid;
+  grid-row: 1 / 3;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  font-size: 1rem;
+  background: rgba(255, 253, 247, 0.72);
+  border: 1px solid rgba(23, 61, 52, 0.38);
+  border-radius: 50%;
+}
+
+.cuisine-choice strong,
+.cuisine-choice small {
+  display: block;
+  padding-right: 12px;
+}
+
+.cuisine-choice strong {
+  align-self: end;
+  font-size: 0.77rem;
+  line-height: 1.2;
+}
+
+.cuisine-choice small {
+  align-self: start;
+  color: var(--ink-soft);
+  font-size: 0.69rem;
+  line-height: 1.25;
+}
+
+.cuisine-leaf { background: var(--leaf-pale); }
+.cuisine-tomato { background: var(--tomato-light); }
+.cuisine-sage { background: var(--leaf-light); }
+.cuisine-gold { background: var(--sun-light); }
+.cuisine-berry { background: var(--berry-light); }
+.cuisine-cream { background: var(--cream-deep); }
+.cuisine-surprise {
+  grid-column: 1 / 3;
+  min-height: 74px;
+  background: linear-gradient(110deg, var(--leaf-pale), var(--sun-light), var(--tomato-light));
+}
+
+.generator-action {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.ingredient-intro {
+  display: flex;
+  gap: 16px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.ingredient-intro p {
+  max-width: 340px;
+  margin-bottom: 0;
+}
+
+.ingredient-intro .pantry-note {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 9px;
+  color: var(--leaf);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--leaf-pale);
+  border-radius: 999px;
+}
+
+.ingredient-search-label {
+  display: block;
+  margin: 22px 0 7px;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.ingredient-search-wrap {
+  position: relative;
+}
+
+.ingredient-search-wrap svg {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 19px;
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  transform: translateY(-50%);
+}
+
+.ingredient-search-wrap input {
+  width: 100%;
+  min-height: 49px;
+  padding: 11px 15px 11px 44px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1.5px solid var(--line);
+  border-radius: 13px;
+}
+
+.ingredient-search-wrap input::placeholder {
+  color: var(--ink-soft);
+  opacity: 1;
+}
+
+.ingredient-search-status {
+  min-height: 18px;
+  margin: 6px 2px 0;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  text-align: right;
+}
+
+.ingredient-picker {
+  max-height: 430px;
+  padding-right: 7px;
+  margin-top: 20px;
+  overflow-y: auto;
+  scrollbar-color: var(--leaf) var(--cream-deep);
+  scrollbar-width: thin;
+}
+
+.ingredient-group + .ingredient-group {
+  margin-top: 19px;
+}
+
+.ingredient-group h4 {
+  margin: 0 0 8px;
+  color: var(--leaf);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.ingredient-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.ingredient-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.ingredient-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.ingredient-option span {
+  display: flex;
+  min-height: 42px;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: var(--cream);
+  border: 1px solid rgba(23, 61, 52, 0.2);
+  border-radius: 11px;
+  transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+}
+
+.ingredient-option span::before {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  place-items: center;
+  content: "";
+  border: 1.5px solid var(--ink-soft);
+  border-radius: 5px;
+}
+
+.ingredient-option input:checked + span {
+  color: var(--ink);
+  background: var(--sun-light);
+  border-color: var(--ink);
+}
+
+.ingredient-option input:checked + span::before {
+  color: var(--cream);
+  font-size: 0.67rem;
+  content: "✓";
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.ingredient-option input:focus-visible + span {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--ink);
+}
+
+.ingredient-option.is-filtered-out,
+.ingredient-group.is-empty {
+  display: none;
+}
+
+.ingredient-no-results {
+  padding: 16px;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  text-align: center;
+  background: var(--cream);
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+}
+
+.ingredient-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  margin-top: 13px;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.ingredient-toolbar button {
+  min-height: 40px;
+  padding: 5px 2px;
+  color: var(--leaf);
+  font-size: 0.72rem;
+  font-weight: 900;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.ingredient-toolbar button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.generator-output {
+  min-width: 0;
+  padding: clamp(30px, 4vw, 50px);
+  background: var(--leaf-pale);
+}
+
+.generator-empty {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 480px;
+  padding: 60px 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.empty-bowl {
+  position: relative;
+  width: 130px;
+  height: 72px;
+  margin-bottom: 38px;
+  overflow: hidden;
+  background: var(--sun-light);
+  border: 2px solid var(--ink);
+  border-radius: 8px 8px 70px 70px;
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+.empty-bowl::before,
+.empty-bowl::after,
+.empty-bowl span {
+  position: absolute;
+  top: -18px;
+  content: "";
+  border-radius: 50%;
+}
+
+.empty-bowl::before {
+  left: 17px;
+  width: 52px;
+  height: 52px;
+  background: var(--leaf);
+  border: 2px solid var(--ink);
+}
+
+.empty-bowl::after {
+  right: 15px;
+  width: 55px;
+  height: 55px;
+  background: var(--tomato);
+  border: 2px solid var(--ink);
+}
+
+.empty-bowl span {
+  right: 47px;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  background: var(--sun);
+  border: 2px solid var(--ink);
+}
+
+.generator-empty .kicker {
+  margin-bottom: 10px;
+}
+
+.generator-empty h3 {
+  max-width: 430px;
+  margin-bottom: 13px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.generator-empty > p:last-child {
+  max-width: 420px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
+.generator-empty .button {
+  margin-top: 22px;
+}
+
+.recipe-result {
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 7px 7px 0 rgba(23, 61, 52, 0.15);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.recipe-result.is-changing,
+.match-results.is-changing {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.recipe-result-header {
+  position: relative;
+  padding: 30px 30px 25px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.recipe-result-header::after {
+  position: absolute;
+  top: -65px;
+  right: -55px;
+  width: 175px;
+  height: 175px;
+  content: "";
+  background: var(--sun-light);
+  border: 1px solid rgba(23, 61, 52, 0.18);
+  border-radius: 50%;
+}
+
+.recipe-result-eyebrow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+  color: var(--leaf);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.recipe-result-eyebrow span {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  color: var(--ink);
+  font-size: 0.9rem;
+  background: var(--sun);
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+
+.recipe-result h3,
+.match-results-heading h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.35rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.recipe-result-description {
+  position: relative;
+  z-index: 1;
+  max-width: 580px;
+  margin-bottom: 17px;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.recipe-meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.recipe-meta span,
+.match-score {
+  display: inline-flex;
+  min-height: 29px;
+  align-items: center;
+  padding: 5px 9px;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  font-weight: 900;
+  background: var(--cream);
+  border: 1px solid rgba(23, 61, 52, 0.2);
+  border-radius: 999px;
+}
+
+.recipe-result-body {
+  padding: 28px 30px 30px;
+}
+
+.recipe-details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 34px;
+}
+
+.recipe-detail-title {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 15px;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.recipe-detail-title span {
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  color: var(--cream);
+  font-size: 0.62rem;
+  background: var(--leaf);
+  border-radius: 50%;
+}
+
+.generated-ingredient-list,
+.generated-step-list {
+  padding: 0;
+  margin: 0;
+}
+
+.generated-ingredient-list {
+  display: grid;
+  gap: 9px;
+  list-style: none;
+}
+
+.generated-ingredient-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 9px;
+  align-items: start;
+  color: var(--ink-soft);
+  font-size: 0.77rem;
+  line-height: 1.4;
+}
+
+.ingredient-status {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  margin-top: 1px;
+  color: var(--ink-soft);
+  font-size: 0.58rem;
+  font-weight: 900;
+  background: var(--cream);
+  border: 1px solid rgba(23, 61, 52, 0.28);
+  border-radius: 50%;
+}
+
+.generated-ingredient-list li.is-have .ingredient-status {
+  color: var(--cream);
+  background: var(--leaf);
+  border-color: var(--leaf);
+}
+
+.generated-ingredient-list li.is-needed .ingredient-status {
+  color: var(--ink);
+  background: var(--sun-light);
+  border-color: var(--ink);
+}
+
+.generated-ingredient-list li.is-substitute .ingredient-status {
+  color: var(--ink);
+  background: var(--sun);
+  border-color: var(--ink);
+}
+
+.ingredient-swap-copy,
+.ingredient-swap-copy small {
+  display: block;
+}
+
+.ingredient-swap-copy small {
+  margin-top: 2px;
+  color: var(--ink-soft);
+  font-size: 0.68rem;
+}
+
+.selected-substitution-note {
+  padding: 12px 13px;
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  line-height: 1.45;
+  background: var(--sun-light);
+  border: 1px solid rgba(23, 61, 52, 0.22);
+  border-radius: 10px;
+}
+
+.selected-substitution-note strong,
+.selected-substitution-note span {
+  display: block;
+}
+
+.selected-substitution-note strong {
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.generated-step-list {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  counter-reset: recipe-step;
+}
+
+.generated-step-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 11px;
+  align-items: start;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  counter-increment: recipe-step;
+}
+
+.generated-step-list li::before {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  color: var(--cream);
+  font-size: 0.67rem;
+  font-weight: 900;
+  content: counter(recipe-step);
+  background: var(--ink);
+  border-radius: 50%;
+}
+
+.recipe-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.recipe-note {
+  padding: 15px;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  background: var(--cream);
+  border-radius: 12px;
+}
+
+.recipe-note strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.recipe-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 22px;
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.recipe-result-actions .button {
+  flex: 1 1 180px;
+}
+
+.button-secondary {
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--leaf-light);
+}
+
+.copy-status {
+  flex-basis: 100%;
+  min-height: 18px;
+  margin: 0;
+  color: var(--leaf);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.match-results-heading {
+  margin-bottom: 22px;
+}
+
+.match-results-heading .kicker {
+  margin-bottom: 8px;
+}
+
+.match-results-heading h3 {
+  margin-bottom: 8px;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.match-results-heading p:last-child {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.match-list {
+  display: grid;
+  gap: 12px;
+}
+
+.match-card {
+  overflow: hidden;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 4px 4px 0 rgba(23, 61, 52, 0.14);
+}
+
+.match-card.is-open {
+  box-shadow: 6px 6px 0 var(--sun-light);
+}
+
+.match-toggle {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  min-height: 88px;
+  gap: 14px;
+  align-items: center;
+  padding: 17px 18px;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+
+.match-toggle-copy {
+  min-width: 0;
+}
+
+.match-toggle-copy > span:first-child {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--leaf);
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.match-recipe-title {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.match-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.match-card-meta span {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.match-toggle-icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: var(--cream);
+  font-size: 1.05rem;
+  background: var(--leaf);
+  border-radius: 50%;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.match-toggle[aria-expanded="true"] .match-toggle-icon {
+  color: var(--ink);
+  background: var(--sun);
+  transform: rotate(45deg);
+}
+
+.match-card-details {
+  padding: 6px 20px 22px;
+  border-top: 1px solid var(--line);
+}
+
+.match-card-details[hidden] {
+  display: none;
+}
+
+.match-card-details .recipe-details-grid {
+  padding-top: 20px;
+}
+
+.missing-summary {
+  padding: 11px 13px;
+  margin: 14px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  background: var(--sun-light);
+  border-radius: 10px;
+}
+
+.missing-summary strong {
+  color: var(--ink);
+}
+
+.missing-summary p {
+  margin: 0;
+}
+
+.missing-summary p + p {
+  margin-top: 7px;
+}
+
+.generator-noscript {
+  padding: 12px;
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-size: 0.78rem;
+  background: var(--sun-light);
+  border: 1px solid var(--ink);
+  border-radius: 10px;
+}
+
 .swaps {
   padding-bottom: 130px;
 }
@@ -1133,7 +2143,7 @@ p {
 }
 
 .swap-bright {
-  color: var(--leaf);
+  color: var(--ink);
 }
 
 .swap-arrow {
@@ -1356,7 +2366,11 @@ p {
 
 .challenge-copy > p:last-child {
   margin: 0;
-  color: rgba(255, 248, 236, 0.78);
+  color: var(--cream);
+}
+
+.challenge-card .kicker-light {
+  color: var(--cream);
 }
 
 .habit-picker {
@@ -1384,7 +2398,7 @@ p {
 }
 
 .habit-option:hover {
-  background: rgba(255, 253, 247, 0.13);
+  background: rgba(23, 61, 52, 0.18);
   transform: translateX(3px);
 }
 
@@ -1426,7 +2440,7 @@ p {
   margin-top: 1px;
   color: inherit;
   font-size: 0.72rem;
-  opacity: 0.72;
+  opacity: 1;
 }
 
 .habit-message {
@@ -1613,6 +2627,10 @@ p {
   margin: 0 auto;
 }
 
+.closing .kicker {
+  color: var(--ink);
+}
+
 .closing-sun {
   position: relative;
   display: block;
@@ -1712,6 +2730,26 @@ p {
 
 .js .reveal-delay-1 { transition-delay: 90ms; }
 .js .reveal-delay-2 { transition-delay: 180ms; }
+
+@media (max-width: 1150px) {
+  .generator-heading {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .generator-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .generator-controls {
+    border-right: 0;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .generator-output {
+    min-height: 520px;
+  }
+}
 
 @media (max-width: 1100px) {
   .header-inner {
@@ -1836,7 +2874,10 @@ p {
     flex-direction: column;
     align-items: stretch;
     padding: 12px;
-    overflow: visible;
+    max-height: calc(100dvh - 92px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background: var(--paper);
     border: 1.5px solid var(--ink);
     border-radius: 20px;
@@ -1936,6 +2977,29 @@ p {
   .plate-section {
     padding-top: 90px;
     padding-bottom: 100px;
+  }
+
+  .meal-generator {
+    padding-top: 90px;
+    padding-bottom: 100px;
+  }
+
+  .generator-heading {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .generator-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .generator-controls {
+    border-right: 0;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .generator-output {
+    min-height: 520px;
   }
 
   .builder-shell {
@@ -2134,6 +3198,123 @@ p {
     padding: 76px 18px 86px;
   }
 
+  .meal-generator {
+    padding: 76px 18px 88px;
+  }
+
+  .meal-generator::before {
+    display: none;
+  }
+
+  .generator-heading {
+    margin-bottom: 34px;
+  }
+
+  .generator-heading h2 {
+    font-size: clamp(2.7rem, 13vw, 4rem);
+  }
+
+  .generator-shell {
+    border-radius: 24px;
+    box-shadow: 7px 7px 0 var(--leaf-light);
+  }
+
+  .generator-controls,
+  .generator-output {
+    padding: 25px 18px;
+  }
+
+  .generator-tabs button {
+    flex-direction: column;
+    min-height: 72px;
+    gap: 5px;
+    padding: 8px 5px;
+    font-size: 0.7rem;
+  }
+
+  .cuisine-grid {
+    gap: 8px;
+  }
+
+  .cuisine-choice {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    min-height: 118px;
+    gap: 4px;
+    justify-items: start;
+    padding: 12px;
+  }
+
+  .cuisine-icon {
+    grid-row: auto;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 3px;
+  }
+
+  .cuisine-choice strong,
+  .cuisine-choice small {
+    padding-right: 0;
+  }
+
+  .cuisine-choice strong {
+    align-self: auto;
+  }
+
+  .cuisine-choice small {
+    align-self: auto;
+  }
+
+  .cuisine-surprise {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    min-height: 76px;
+    column-gap: 10px;
+  }
+
+  .cuisine-surprise .cuisine-icon {
+    grid-row: 1 / 3;
+  }
+
+  .ingredient-intro {
+    flex-direction: column;
+  }
+
+  .ingredient-options-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .generator-output {
+    min-height: 430px;
+  }
+
+  .generator-empty {
+    padding: 45px 4px;
+  }
+
+  .recipe-result-header,
+  .recipe-result-body {
+    padding: 24px 19px;
+  }
+
+  .recipe-details-grid,
+  .recipe-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-details-grid {
+    gap: 28px;
+  }
+
+  .match-toggle {
+    padding: 15px;
+  }
+
+  .match-card-details {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
   .builder-shell {
     border-radius: 24px;
     box-shadow: 7px 7px 0 var(--leaf);
@@ -2297,10 +3478,50 @@ p {
   }
 }
 
+@media (max-width: 470px) {
+  .cuisine-grid,
+  .ingredient-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cuisine-choice,
+  .cuisine-surprise {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    min-height: 78px;
+    column-gap: 11px;
+  }
+
+  .cuisine-choice .cuisine-icon,
+  .cuisine-surprise .cuisine-icon {
+    grid-row: 1 / 3;
+  }
+
+  .cuisine-surprise {
+    grid-column: auto;
+  }
+
+  .recipe-result-actions .button {
+    flex-basis: 100%;
+  }
+}
+
 :where(a, button, input, [tabindex]):focus-visible {
   outline: 3px solid var(--paper);
   outline-offset: 2px;
   box-shadow: 0 0 0 6px var(--ink);
+}
+
+.match-card .match-toggle:focus-visible {
+  outline: 0;
+  background: var(--sun-light);
+  box-shadow: inset 0 0 0 3px var(--ink);
+}
+
+.cuisine-choice input:focus-visible,
+.ingredient-option input:focus-visible {
+  outline: 0;
+  box-shadow: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2325,15 +3546,16 @@ p {
 
 </style>
     
+    
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header" data-header>
       <div class="header-inner">
-        <a class="brand" href="#top" aria-label="Steady Plate home">
+        <a class="brand" href="#top" aria-label="What to Eat? home">
           <span class="brand-mark" aria-hidden="true"><span></span></span>
-          <span>Steady Plate</span>
+          <span>What to Eat?</span>
         </a>
 
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -2344,11 +3566,12 @@ p {
         <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
           <a href="#why">Why it works</a>
           <a href="#plate-builder">Build a plate</a>
+          <a href="#meal-generator">Meal generator</a>
           <a href="#swaps">Easy swaps</a>
           <a href="#questions">Questions</a>
         </nav>
 
-        <a class="button button-small header-cta" href="#plate-builder">Plan my plate</a>
+        <a class="button button-small header-cta" href="#meal-generator">Find a meal</a>
       </div>
     </header>
 
@@ -2366,7 +3589,7 @@ p {
               Build a balanced plate
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12h14m-5-5 5 5-5 5" /></svg>
             </a>
-            <a class="text-link" href="#swaps">See easy food swaps <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#meal-generator">Help me choose a meal <span aria-hidden="true">↓</span></a>
           </div>
           <div class="hero-note">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" /></svg>
@@ -2454,7 +3677,7 @@ p {
         <div class="builder-shell reveal reveal-delay-1">
           <div class="builder-visual">
             <div class="plate-wrap">
-              <div class="plate" aria-label="Balanced plate: half non-starchy vegetables, one quarter protein, and one quarter carbohydrate foods">
+              <div class="plate" role="img" aria-label="Balanced plate: half non-starchy vegetables, one quarter protein, and one quarter carbohydrate foods">
                 <div class="plate-segment plate-veg">
                   <span class="plate-fraction">½</span>
                   <strong>Non-starchy<br />vegetables</strong>
@@ -2487,7 +3710,7 @@ p {
             <div>
               <span class="field-label">2. Make it fit your day</span>
               <div class="preference-chips" role="group" aria-label="Meal preference">
-                <button class="preference-chip is-active" type="button" data-preference="quick" aria-pressed="true">Under 15 min</button>
+                <button class="preference-chip is-active" type="button" data-preference="quick" aria-pressed="true">15 min or less</button>
                 <button class="preference-chip" type="button" data-preference="budget" aria-pressed="false">Budget-friendly</button>
                 <button class="preference-chip" type="button" data-preference="plant" aria-pressed="false">Plant-forward</button>
               </div>
@@ -2509,6 +3732,163 @@ p {
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="meal-generator" id="meal-generator">
+        <div class="generator-heading reveal">
+          <div>
+            <p class="kicker">When you don’t know what to eat</p>
+            <h2>Pick a path. Get a meal.</h2>
+          </div>
+          <p>
+            Choose a cuisine for a healthy idea, or tell us what is in your kitchen. Every result
+            includes ingredients and simple step-by-step directions.
+          </p>
+        </div>
+
+        <div class="generator-shell reveal reveal-delay-1">
+          <div class="generator-controls">
+            <div class="generator-tabs" role="tablist" aria-label="Choose how to find a meal">
+              <button
+                type="button"
+                id="generator-tab-cuisine"
+                role="tab"
+                aria-selected="true"
+                aria-controls="generator-panel-cuisine"
+                data-generator-tab="cuisine"
+              >
+                <span aria-hidden="true">01</span>
+                Choose a cuisine
+              </button>
+              <button
+                type="button"
+                id="generator-tab-ingredients"
+                role="tab"
+                aria-selected="false"
+                aria-controls="generator-panel-ingredients"
+                data-generator-tab="ingredients"
+                tabindex="-1"
+              >
+                <span aria-hidden="true">02</span>
+                Use my ingredients
+              </button>
+            </div>
+            <noscript><p class="generator-noscript">Turn on JavaScript to use the meal generator.</p></noscript>
+
+            <div
+              class="generator-panel"
+              id="generator-panel-cuisine"
+              role="tabpanel"
+              aria-labelledby="generator-tab-cuisine"
+              data-generator-panel="cuisine"
+            >
+              <fieldset class="generator-fieldset">
+                <legend>What sounds good?</legend>
+                <p class="generator-helper">Pick one. We’ll do the rest.</p>
+                <div class="cuisine-grid">
+                  <label class="cuisine-choice cuisine-leaf">
+                    <input type="radio" name="cuisine" value="mediterranean" />
+                    <span class="cuisine-icon" aria-hidden="true">🌿</span>
+                    <strong>Mediterranean</strong>
+                    <small>Bright, herby & fresh</small>
+                  </label>
+                  <label class="cuisine-choice cuisine-tomato">
+                    <input type="radio" name="cuisine" value="mexican" />
+                    <span class="cuisine-icon" aria-hidden="true">◆</span>
+                    <strong>Mexican-inspired</strong>
+                    <small>Zesty, colorful & filling</small>
+                  </label>
+                  <label class="cuisine-choice cuisine-sage">
+                    <input type="radio" name="cuisine" value="east-asian" />
+                    <span class="cuisine-icon" aria-hidden="true">◫</span>
+                    <strong>East Asian-inspired</strong>
+                    <small>Savory, crisp & simple</small>
+                  </label>
+                  <label class="cuisine-choice cuisine-gold">
+                    <input type="radio" name="cuisine" value="indian" />
+                    <span class="cuisine-icon" aria-hidden="true">✦</span>
+                    <strong>Indian-inspired</strong>
+                    <small>Warm, spiced & comforting</small>
+                  </label>
+                  <label class="cuisine-choice cuisine-berry">
+                    <input type="radio" name="cuisine" value="middle-eastern" />
+                    <span class="cuisine-icon" aria-hidden="true">◐</span>
+                    <strong>Middle Eastern-inspired</strong>
+                    <small>Lemony, nutty & vibrant</small>
+                  </label>
+                  <label class="cuisine-choice cuisine-cream">
+                    <input type="radio" name="cuisine" value="comfort" />
+                    <span class="cuisine-icon" aria-hidden="true">♨</span>
+                    <strong>Comfort classics</strong>
+                    <small>Familiar, cozy & balanced</small>
+                  </label>
+                  <label class="cuisine-choice cuisine-surprise">
+                    <input type="radio" name="cuisine" value="surprise" />
+                    <span class="cuisine-icon" aria-hidden="true">?</span>
+                    <strong>Surprise me</strong>
+                    <small>Decision fully delegated</small>
+                  </label>
+                </div>
+              </fieldset>
+              <button class="button button-primary generator-action" type="button" data-generate-cuisine disabled>
+                Make me a meal
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12h14m-5-5 5 5-5 5" /></svg>
+              </button>
+            </div>
+
+            <div
+              class="generator-panel"
+              id="generator-panel-ingredients"
+              role="tabpanel"
+              aria-labelledby="generator-tab-ingredients"
+              data-generator-panel="ingredients"
+              hidden
+            >
+              <div class="ingredient-intro">
+                <div>
+                  <h3>What do you have?</h3>
+                  <p>Pick everything that applies. Choose at least two ingredients for a useful match.</p>
+                </div>
+                <p class="pantry-note"><span aria-hidden="true">✓</span> Assumes oil, salt, pepper & water</p>
+              </div>
+
+              <label class="ingredient-search-label" for="ingredient-search">Search ingredients</label>
+              <div class="ingredient-search-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="m16 16 4 4" /></svg>
+                <input id="ingredient-search" type="search" placeholder="Try chicken, beans, broccoli…" autocomplete="off" data-ingredient-search />
+              </div>
+              <p class="ingredient-search-status" role="status" aria-live="polite" data-ingredient-search-status>38 ingredients shown</p>
+
+              <div class="ingredient-picker" data-ingredient-options></div>
+              <noscript><p class="generator-helper">Turn on JavaScript to use the ingredient matcher.</p></noscript>
+
+              <div class="ingredient-toolbar">
+                <span data-selected-count aria-live="polite">0 ingredients selected</span>
+                <button type="button" data-clear-ingredients disabled>Clear all</button>
+              </div>
+
+              <button class="button button-primary generator-action" type="button" data-match-ingredients disabled>
+                Find my closest meals
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12h14m-5-5 5 5-5 5" /></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="generator-output" data-generator-output>
+            <div class="generator-empty" data-generator-empty>
+              <div class="empty-bowl" aria-hidden="true"><span></span></div>
+              <p class="kicker">Your next meal starts here</p>
+              <h3>Choose a cuisine, then we’ll do the deciding.</h3>
+              <p>No scrolling through hundreds of recipes. Just one practical place to start.</p>
+            </div>
+          </div>
+          <p class="sr-only" data-generator-status aria-live="polite"></p>
+        </div>
+        <p class="generator-disclaimer">
+          Recipe ideas are general, not personalized. Check every ingredient for allergies or intolerances,
+          follow safe cooking temperatures, and adjust the plan for your health needs.
+          <a href="https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures" target="_blank" rel="noopener noreferrer">FoodSafety.gov temperature guide</a>
+        </p>
       </section>
 
       <section class="section swaps" id="swaps">
@@ -2554,16 +3934,17 @@ p {
       <section class="meal-ideas">
         <div class="meal-ideas-inner">
           <div class="meal-ideas-copy reveal">
-            <p class="kicker">Three ideas to steal</p>
+            <p class="kicker">A few favorites</p>
             <h2>Good food that happens to be good for you.</h2>
             <p>Healthy eating can fit your culture, traditions, budget, and preferences. These are starting points, not rules.</p>
-            <a class="text-link" href="#challenge">Pick one small step <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#meal-generator">Generate something for me <span aria-hidden="true">↑</span></a>
           </div>
 
           <div class="recipe-stack">
             <article class="recipe-card reveal">
               <div class="recipe-art recipe-oats" aria-hidden="true"><span>10</span><small>min</small></div>
               <div class="recipe-copy">
+                <span class="sr-only">Ready in 10 minutes.</span>
                 <span class="recipe-type">Quick breakfast</span>
                 <h3>Berry–walnut overnight oats</h3>
                 <p>Oats, milk, chia seeds, berries, walnuts</p>
@@ -2576,6 +3957,7 @@ p {
             <article class="recipe-card reveal reveal-delay-1">
               <div class="recipe-art recipe-bowl" aria-hidden="true"><span>15</span><small>min</small></div>
               <div class="recipe-copy">
+                <span class="sr-only">Ready in 15 minutes.</span>
                 <span class="recipe-type">Flexible lunch</span>
                 <h3>Crunchy chickpea power bowl</h3>
                 <p>Greens, chickpeas, brown rice, cucumber, tahini</p>
@@ -2588,6 +3970,7 @@ p {
             <article class="recipe-card reveal reveal-delay-2">
               <div class="recipe-art recipe-pan" aria-hidden="true"><span>25</span><small>min</small></div>
               <div class="recipe-copy">
+                <span class="sr-only">Ready in 25 minutes.</span>
                 <span class="recipe-type">One-pan dinner</span>
                 <h3>Salmon or tofu with greens</h3>
                 <p>Salmon or tofu, broccoli, peppers, sweet potato</p>
@@ -2705,16 +4088,16 @@ p {
           <span class="closing-sun" aria-hidden="true"></span>
           <p class="kicker">Start where you are</p>
           <h2>Your next meal is a fresh start.</h2>
-          <a class="button button-primary" href="#plate-builder">Plan my next meal</a>
+          <a class="button button-primary" href="#meal-generator">Find my next meal</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="footer-top">
-        <a class="brand brand-footer" href="#top" aria-label="Steady Plate home">
+        <a class="brand brand-footer" href="#top" aria-label="What to Eat? home">
           <span class="brand-mark" aria-hidden="true"><span></span></span>
-          <span>Steady Plate</span>
+          <span>What to Eat?</span>
         </a>
         <p>Practical food guidance for steadier health—one meal at a time.</p>
         <div class="footer-links">
@@ -2727,10 +4110,658 @@ p {
         <p>
           General educational information only—not medical advice, diagnosis, treatment, or a guarantee of prevention. Nutrition needs vary. Talk with a qualified health professional before major changes, especially if you have diabetes, take glucose-lowering medicine, are pregnant, have kidney disease, or have a history of disordered eating. Do not change prescribed medicines based on this site. This page focuses specifically on reducing type 2 diabetes risk.
         </p>
-        <span>© <span data-year></span> Steady Plate</span>
+        <span>© <span data-year></span> What to Eat?</span>
       </div>
     </footer>
   <script>
+globalThis.WHAT_TO_EAT_DATA = {
+  cuisines: [
+    { id: "mediterranean", label: "Mediterranean", icon: "🌿" },
+    { id: "mexican", label: "Mexican-inspired", icon: "◆" },
+    { id: "east-asian", label: "East Asian-inspired", icon: "◫" },
+    { id: "indian", label: "Indian-inspired", icon: "✦" },
+    { id: "middle-eastern", label: "Middle Eastern-inspired", icon: "◐" },
+    { id: "comfort", label: "Comfort classics", icon: "♨" },
+  ],
+  ingredientGroups: [
+    {
+      id: "protein",
+      label: "Protein",
+      items: [
+        { key: "chicken", label: "Boneless chicken" },
+        { key: "salmon", label: "Salmon fillet" },
+        { key: "tofu", label: "Extra-firm tofu" },
+        { key: "eggs", label: "Eggs" },
+        { key: "ground-turkey", label: "Ground turkey" },
+        { key: "plain-yogurt", label: "Plain yogurt" },
+        { key: "edamame", label: "Frozen shelled edamame" },
+      ],
+    },
+    {
+      id: "beans",
+      label: "Beans & lentils",
+      items: [
+        { key: "black-beans", label: "Cooked or canned black beans" },
+        { key: "pinto-beans", label: "Cooked or canned pinto beans" },
+        { key: "chickpeas", label: "Cooked or canned chickpeas" },
+        { key: "white-beans", label: "Cooked or canned white beans" },
+        { key: "brown-lentils", label: "Cooked brown or green lentils" },
+        { key: "red-lentils", label: "Dry red lentils" },
+      ],
+    },
+    {
+      id: "grains",
+      label: "Grains & starches",
+      items: [
+        { key: "brown-rice", label: "Cooked brown rice" },
+        { key: "quinoa", label: "Cooked quinoa" },
+        { key: "whole-wheat-pasta", label: "Whole-wheat pasta" },
+        { key: "soba-noodles", label: "Soba noodles" },
+        { key: "corn-tortillas", label: "Corn tortillas" },
+        { key: "whole-grain-pita", label: "Whole-grain pita" },
+        { key: "oats", label: "Oats" },
+        { key: "sweet-potato", label: "Sweet potato" },
+        { key: "white-potato", label: "Potato" },
+      ],
+    },
+    {
+      id: "produce",
+      label: "Produce",
+      items: [
+        { key: "spinach", label: "Spinach" },
+        { key: "broccoli", label: "Broccoli" },
+        { key: "bell-pepper", label: "Bell pepper" },
+        { key: "onion", label: "Onion" },
+        { key: "tomato", label: "Fresh tomato" },
+        { key: "canned-tomatoes", label: "Canned tomatoes" },
+        { key: "cucumber", label: "Cucumber" },
+        { key: "cabbage", label: "Cabbage" },
+        { key: "carrots", label: "Carrots" },
+        { key: "cauliflower", label: "Cauliflower" },
+        { key: "green-beans", label: "Green beans" },
+        { key: "lettuce", label: "Lettuce" },
+        { key: "frozen-mixed-vegetables", label: "Frozen mixed vegetables" },
+        { key: "corn", label: "Corn" },
+        { key: "scallions", label: "Scallions" },
+        { key: "avocado", label: "Avocado" },
+      ],
+    },
+  ],
+  recipes: [
+    {
+      id: "lemon-chicken-quinoa-bowls",
+      cuisine: "mediterranean",
+      title: "Lemon-herb chicken quinoa bowls",
+      description: "Warm quinoa, skillet chicken, and crisp vegetables with a bright lemon dressing.",
+      timeMinutes: 20,
+      servings: 2,
+      matchKeys: ["chicken", "quinoa", "cucumber", "tomato", "spinach"],
+      ingredientAlternatives: { chicken: ["chickpeas", "tofu"], quinoa: ["brown-rice"] },
+      ingredients: [
+        { key: "quinoa", item: "Cooked quinoa", amount: "1½ cups" },
+        { key: "chicken", item: "Boneless chicken", amount: "8 oz" },
+        { key: "cucumber", item: "Chopped cucumber", amount: "1 cup" },
+        { key: "tomato", item: "Halved cherry tomatoes", amount: "1 cup" },
+        { key: "spinach", item: "Baby spinach", amount: "2 cups" },
+        { key: "lemon", item: "Lemon", amount: "1" },
+        { key: "olive-oil", item: "Olive oil", amount: "1 Tbsp" },
+        { key: "oregano", item: "Dried oregano", amount: "1 tsp" },
+        { key: "garlic-powder", item: "Garlic powder", amount: "½ tsp" },
+        { key: "salt-pepper", item: "Salt and pepper", amount: "To taste" },
+      ],
+      steps: [
+        "Warm the cooked quinoa in the microwave or a covered saucepan with a splash of water.",
+        "Coat the chicken with 2 teaspoons oil, oregano, garlic powder, salt, and pepper.",
+        "Cook the chicken in a skillet over medium heat until the thickest part reaches 165°F on a food thermometer, about 5–6 minutes per side; slice.",
+        "Toss the cucumber, tomato, and spinach with the remaining oil and juice from half the lemon.",
+        "Divide the quinoa, vegetables, and chicken between bowls; serve with the remaining lemon.",
+      ],
+      substitutions: ["For chickpeas, skip the chicken-cooking step and add drained chickpeas to the bowl; for tofu, season and cook until browned.", "Use cooked brown rice instead of quinoa."],
+      whyBalanced: "Chicken supplies protein, quinoa adds a fiber-rich carbohydrate, and the vegetables add color, texture, and nutrients.",
+    },
+    {
+      id: "sheet-pan-salmon-chickpeas",
+      cuisine: "mediterranean",
+      title: "Sheet-pan salmon, chickpeas, and vegetables",
+      description: "A low-prep tray of flaky salmon, crisp chickpeas, broccoli, and peppers.",
+      timeMinutes: 35,
+      servings: 2,
+      matchKeys: ["salmon", "chickpeas", "broccoli", "bell-pepper"],
+      ingredientAlternatives: { salmon: ["chicken", "tofu"], broccoli: ["cauliflower", "green-beans"] },
+      ingredients: [
+        { key: "salmon", item: "Salmon fillets", amount: "8 oz total" },
+        { key: "chickpeas", item: "Drained chickpeas", amount: "1 cup" },
+        { key: "broccoli", item: "Broccoli florets", amount: "2 cups" },
+        { key: "bell-pepper", item: "Sliced bell pepper", amount: "1" },
+        { key: "lemon", item: "Lemon", amount: "1" },
+        { key: "olive-oil", item: "Olive oil", amount: "1 Tbsp" },
+        { key: "smoked-paprika", item: "Smoked paprika", amount: "1 tsp" },
+        { key: "garlic-powder", item: "Garlic powder", amount: "½ tsp" },
+        { key: "salt-pepper", item: "Salt and pepper", amount: "To taste" },
+      ],
+      steps: [
+        "Heat the oven to 425°F and line a sheet pan.",
+        "Toss the chickpeas, broccoli, and pepper with the oil, paprika, garlic powder, salt, and pepper.",
+        "Roast for 12 minutes, then stir and make space for the salmon.",
+        "Add the salmon, squeeze half the lemon over it, and roast 10–12 minutes more, until the thickest part reaches 145°F on a food thermometer.",
+        "Divide between plates and finish with the remaining lemon.",
+      ],
+      substitutions: ["For chicken strips, add them when the salmon would be added and roast to 165°F; for tofu, roast until browned.", "Use cauliflower or green beans in place of broccoli."],
+      whyBalanced: "Salmon and chickpeas provide satisfying protein, while chickpeas and the vegetables contribute fiber.",
+    },
+    {
+      id: "tomato-white-bean-pasta",
+      cuisine: "mediterranean",
+      title: "Tomato white bean spinach pasta",
+      description: "A cozy whole-wheat pasta with creamy beans, tomatoes, and wilted greens.",
+      timeMinutes: 25,
+      servings: 2,
+      matchKeys: ["white-beans", "whole-wheat-pasta", "canned-tomatoes", "spinach"],
+      ingredientAlternatives: { "white-beans": ["chickpeas"] },
+      ingredients: [
+        { key: "whole-wheat-pasta", item: "Whole-wheat pasta", amount: "5 oz dry" },
+        { key: "white-beans", item: "Drained white beans", amount: "1 can (15 oz)" },
+        { key: "canned-tomatoes", item: "Diced tomatoes", amount: "1 can (14.5 oz)" },
+        { key: "spinach", item: "Baby spinach", amount: "3 cups" },
+        { key: "onion", item: "Diced onion", amount: "½ medium" },
+        { key: "garlic", item: "Minced garlic", amount: "2 cloves" },
+        { key: "olive-oil", item: "Olive oil", amount: "1 Tbsp" },
+        { key: "italian-seasoning", item: "Italian seasoning", amount: "1 tsp" },
+        { key: "parmesan", item: "Grated Parmesan", amount: "2 Tbsp, optional" },
+        { key: "salt-pepper", item: "Salt and pepper", amount: "To taste" },
+      ],
+      steps: [
+        "Cook the pasta according to its package directions; save ½ cup pasta water before draining.",
+        "Heat the oil in a skillet and soften the onion for 4–5 minutes.",
+        "Add the garlic and Italian seasoning; stir for 30 seconds.",
+        "Add the tomatoes and beans and simmer for 6–8 minutes.",
+        "Fold in the spinach and pasta, adding pasta water as needed; finish with Parmesan if using.",
+      ],
+      substitutions: ["Use chickpeas instead of white beans.", "Use frozen spinach; thaw it and squeeze out excess water first."],
+      whyBalanced: "Beans add protein and fiber, whole-wheat pasta provides a hearty carbohydrate, and spinach and tomatoes add vegetables.",
+    },
+    {
+      id: "black-bean-sweet-potato-tacos",
+      cuisine: "mexican",
+      title: "Black bean sweet potato tacos",
+      description: "Roasted sweet potato and seasoned beans tucked into warm tortillas with crunchy slaw.",
+      timeMinutes: 30,
+      servings: 2,
+      matchKeys: ["black-beans", "sweet-potato", "corn-tortillas", "cabbage"],
+      ingredientAlternatives: { "black-beans": ["pinto-beans"] },
+      ingredients: [
+        { key: "sweet-potato", item: "Diced sweet potato", amount: "1 large" },
+        { key: "black-beans", item: "Drained black beans", amount: "1 cup" },
+        { key: "corn-tortillas", item: "Small corn tortillas", amount: "6" },
+        { key: "cabbage", item: "Shredded cabbage", amount: "2 cups" },
+        { key: "salsa", item: "Salsa", amount: "½ cup" },
+        { key: "avocado", item: "Sliced avocado", amount: "½, optional" },
+        { key: "lime", item: "Lime", amount: "1" },
+        { key: "olive-oil", item: "Oil", amount: "2 tsp" },
+        { key: "chili-powder", item: "Chili powder", amount: "1 tsp" },
+        { key: "cumin", item: "Ground cumin", amount: "½ tsp" },
+        { key: "salt", item: "Salt", amount: "To taste" },
+      ],
+      steps: [
+        "Heat the oven to 425°F and toss the sweet potato with oil, chili powder, cumin, and salt.",
+        "Roast for 20–22 minutes, stirring once.",
+        "Warm the beans in a small pan with 2 tablespoons water and a spoonful of salsa.",
+        "Warm the tortillas and toss the cabbage with lime juice.",
+        "Fill each tortilla with beans, sweet potato, slaw, salsa, and avocado if using.",
+      ],
+      substitutions: ["Use pinto beans in place of black beans.", "Use a microwave-baked sweet potato when time is short."],
+      whyBalanced: "Beans provide protein and fiber, while sweet potato, cabbage, and avocado make the tacos filling and colorful.",
+    },
+    {
+      id: "chicken-fajita-rice-bowls",
+      cuisine: "mexican",
+      title: "Chicken fajita brown rice bowls",
+      description: "Fast skillet chicken and peppers over brown rice with corn, salsa, and lime.",
+      timeMinutes: 25,
+      servings: 2,
+      matchKeys: ["chicken", "brown-rice", "bell-pepper", "onion", "corn"],
+      ingredientAlternatives: { chicken: ["tofu", "pinto-beans", "black-beans"], "brown-rice": ["quinoa"] },
+      ingredients: [
+        { key: "chicken", item: "Chicken cut into strips", amount: "8 oz" },
+        { key: "brown-rice", item: "Cooked brown rice", amount: "2 cups" },
+        { key: "bell-pepper", item: "Sliced bell pepper", amount: "1" },
+        { key: "onion", item: "Sliced onion", amount: "½ medium" },
+        { key: "corn", item: "Corn", amount: "½ cup" },
+        { key: "salsa", item: "Salsa", amount: "½ cup" },
+        { key: "lime", item: "Lime", amount: "1" },
+        { key: "olive-oil", item: "Oil", amount: "1 Tbsp" },
+        { key: "chili-powder", item: "Chili powder", amount: "1 tsp" },
+        { key: "cumin", item: "Ground cumin", amount: "½ tsp" },
+        { key: "salt", item: "Salt", amount: "To taste" },
+      ],
+      steps: [
+        "Coat the chicken with half the oil, chili powder, cumin, and salt.",
+        "Cook the chicken in a hot skillet for 5–7 minutes, until the thickest pieces reach 165°F on a food thermometer; transfer to a plate.",
+        "Add the remaining oil, pepper, and onion; cook until tender-crisp, about 5 minutes.",
+        "Return the chicken and add the corn; stir until hot.",
+        "Serve over brown rice with salsa and lime.",
+      ],
+      substitutions: ["For tofu, follow the chicken step and cook until browned; for beans, skip that step and warm them with the corn.", "Use quinoa instead of brown rice."],
+      whyBalanced: "Chicken adds protein, brown rice supplies a fiber-rich carbohydrate, and peppers, onion, corn, and salsa round out the bowl.",
+    },
+    {
+      id: "egg-pinto-breakfast-skillet",
+      cuisine: "mexican",
+      title: "Egg and pinto bean breakfast skillet",
+      description: "Eggs gently cooked over saucy beans, tomatoes, and spinach, served with tortillas.",
+      timeMinutes: 20,
+      servings: 2,
+      matchKeys: ["eggs", "pinto-beans", "canned-tomatoes", "spinach", "corn-tortillas"],
+      ingredientAlternatives: { "pinto-beans": ["black-beans"] },
+      ingredients: [
+        { key: "eggs", item: "Eggs", amount: "4" },
+        { key: "pinto-beans", item: "Drained pinto beans", amount: "1 cup" },
+        { key: "canned-tomatoes", item: "Drained diced tomatoes", amount: "1 cup" },
+        { key: "spinach", item: "Baby spinach", amount: "2 cups" },
+        { key: "onion", item: "Diced onion", amount: "½ small" },
+        { key: "corn-tortillas", item: "Corn tortillas", amount: "4" },
+        { key: "avocado", item: "Sliced avocado", amount: "½, optional" },
+        { key: "olive-oil", item: "Oil", amount: "2 tsp" },
+        { key: "cumin", item: "Ground cumin", amount: "½ tsp" },
+        { key: "salt-pepper", item: "Salt and pepper", amount: "To taste" },
+      ],
+      steps: [
+        "Heat the oil in a skillet and cook the onion until softened, about 4 minutes.",
+        "Stir in the beans, tomatoes, cumin, salt, and pepper; simmer for 3 minutes.",
+        "Fold in the spinach until wilted.",
+        "Make four wells, crack in the eggs, cover, and cook until the whites and yolks are firm, or the centers reach 160°F.",
+        "Serve with warmed tortillas and avocado if using.",
+      ],
+      substitutions: ["Use black beans instead of pinto beans.", "Scramble the eggs into the mixture if you prefer firm yolks."],
+      whyBalanced: "Eggs and beans contribute protein, while beans, spinach, and tomatoes add fiber and vegetables.",
+    },
+    {
+      id: "ginger-tofu-broccoli-bowls",
+      cuisine: "east-asian",
+      title: "Ginger tofu broccoli rice bowls",
+      description: "Golden tofu and colorful vegetables in a quick ginger-soy sauce.",
+      timeMinutes: 25,
+      servings: 2,
+      matchKeys: ["tofu", "brown-rice", "broccoli", "carrots", "edamame"],
+      ingredientAlternatives: {
+        tofu: ["chicken"],
+        broccoli: ["frozen-mixed-vegetables"],
+        carrots: ["frozen-mixed-vegetables"],
+      },
+      ingredients: [
+        { key: "tofu", item: "Extra-firm tofu, cubed", amount: "10 oz" },
+        { key: "brown-rice", item: "Cooked brown rice", amount: "2 cups" },
+        { key: "broccoli", item: "Broccoli florets", amount: "2 cups" },
+        { key: "carrots", item: "Thinly sliced carrot", amount: "1 large" },
+        { key: "edamame", item: "Shelled edamame", amount: "½ cup" },
+        { key: "soy-sauce", item: "Lower-sodium soy sauce", amount: "2 Tbsp" },
+        { key: "rice-vinegar", item: "Rice vinegar", amount: "1 Tbsp" },
+        { key: "ginger", item: "Grated ginger", amount: "1 Tbsp" },
+        { key: "garlic", item: "Minced garlic", amount: "1 clove" },
+        { key: "neutral-oil", item: "Neutral oil", amount: "1 Tbsp" },
+        { key: "sesame-oil", item: "Sesame oil", amount: "1 tsp" },
+      ],
+      steps: [
+        "Pat the tofu dry and brown it in half the neutral oil for 7–8 minutes; transfer to a plate.",
+        "Add the remaining oil, broccoli, carrot, and 2 tablespoons water; cover for 3 minutes.",
+        "Add the frozen edamame, ginger, and garlic; cover for 3–4 minutes, until the edamame is hot.",
+        "Stir in the soy sauce, vinegar, sesame oil, and tofu; cook for 1–2 minutes.",
+        "Spoon over warm brown rice.",
+      ],
+      substitutions: ["If using chicken, cook it to 165°F in the first step.", "Use frozen stir-fry vegetables in place of the broccoli and carrot."],
+      whyBalanced: "Tofu and edamame supply plant protein, brown rice provides a hearty carbohydrate, and the vegetables add fiber and variety.",
+    },
+    {
+      id: "sesame-salmon-soba",
+      cuisine: "east-asian",
+      title: "Sesame salmon soba bowls",
+      description: "Flaky salmon, buckwheat noodles, cabbage, and cucumber with a tangy sesame dressing.",
+      timeMinutes: 25,
+      servings: 2,
+      matchKeys: ["salmon", "soba-noodles", "cabbage", "cucumber", "scallions"],
+      ingredientAlternatives: { salmon: ["tofu"], "soba-noodles": ["whole-wheat-pasta"] },
+      ingredients: [
+        { key: "salmon", item: "Salmon fillets", amount: "8 oz total" },
+        { key: "soba-noodles", item: "Soba noodles", amount: "4 oz dry" },
+        { key: "cabbage", item: "Shredded cabbage", amount: "2 cups" },
+        { key: "cucumber", item: "Thinly sliced cucumber", amount: "1 small" },
+        { key: "scallions", item: "Sliced scallions", amount: "2" },
+        { key: "soy-sauce", item: "Lower-sodium soy sauce", amount: "1½ Tbsp" },
+        { key: "rice-vinegar", item: "Rice vinegar", amount: "1½ Tbsp" },
+        { key: "sesame-oil", item: "Sesame oil", amount: "1 tsp" },
+        { key: "neutral-oil", item: "Neutral oil", amount: "1 tsp" },
+        { key: "sesame-seeds", item: "Sesame seeds", amount: "1 Tbsp, optional" },
+      ],
+      steps: [
+        "Cook the soba according to its package directions, rinse under cool water, and drain.",
+        "Brush the salmon with neutral oil and cook for 3–5 minutes per side, until the thickest part reaches 145°F on a food thermometer.",
+        "Whisk together the soy sauce, vinegar, and sesame oil.",
+        "Toss the soba, cabbage, cucumber, scallions, and dressing.",
+        "Divide into bowls, add the salmon, and sprinkle with sesame seeds if using.",
+      ],
+      substitutions: ["For canned salmon, drain it and flake it over the finished bowl without searing; for tofu, sear 3–5 minutes per side.", "Use whole-wheat spaghetti if soba is unavailable."],
+      whyBalanced: "Salmon provides protein and unsaturated fat, while noodles and crisp vegetables make this a complete, satisfying bowl.",
+    },
+    {
+      id: "chicken-vegetable-fried-rice",
+      cuisine: "east-asian",
+      title: "Chicken vegetable fried brown rice",
+      description: "A fast way to turn leftover rice, chicken, eggs, and frozen vegetables into dinner.",
+      timeMinutes: 20,
+      servings: 2,
+      matchKeys: ["chicken", "brown-rice", "eggs", "frozen-mixed-vegetables"],
+      ingredientAlternatives: { chicken: ["tofu", "edamame"] },
+      ingredients: [
+        { key: "chicken", item: "Diced chicken", amount: "8 oz" },
+        { key: "brown-rice", item: "Cold cooked brown rice, refrigerated within 2 hours of cooking", amount: "2 cups" },
+        { key: "eggs", item: "Eggs", amount: "2" },
+        { key: "frozen-mixed-vegetables", item: "Frozen mixed vegetables", amount: "2 cups" },
+        { key: "scallions", item: "Sliced scallions", amount: "2" },
+        { key: "soy-sauce", item: "Lower-sodium soy sauce", amount: "2 Tbsp" },
+        { key: "neutral-oil", item: "Neutral oil", amount: "1 Tbsp" },
+        { key: "ginger", item: "Grated ginger", amount: "1 tsp" },
+        { key: "garlic", item: "Minced garlic", amount: "1 clove" },
+      ],
+      steps: [
+        "Heat half the oil in a large skillet and cook the chicken until the thickest pieces reach 165°F; transfer to a plate.",
+        "Add the eggs and scramble until firm; move them to the plate.",
+        "Add the remaining oil and frozen vegetables; cook until hot and lightly browned.",
+        "Add the rice, ginger, garlic, and soy sauce; stir-fry until the rice is steaming hot.",
+        "Return the chicken and eggs, add the scallions, and toss until the entire dish reaches 165°F.",
+      ],
+      substitutions: ["For tofu, brown it in the first step; for edamame, cook it with the vegetables; for properly refrigerated leftover chicken, add it at the final step and reheat the entire dish to 165°F.", "Use any frozen vegetable blend you enjoy."],
+      whyBalanced: "Chicken and eggs add protein, brown rice supplies carbohydrate and fiber, and frozen vegetables make up a generous part of the meal.",
+    },
+    {
+      id: "red-lentil-spinach-dal",
+      cuisine: "indian",
+      title: "Red lentil spinach dal",
+      description: "A warmly spiced lentil stew with tomatoes and spinach, served over brown rice.",
+      timeMinutes: 25,
+      servings: 2,
+      matchKeys: ["red-lentils", "brown-rice", "canned-tomatoes", "spinach"],
+      ingredientAlternatives: { "brown-rice": ["quinoa", "whole-grain-pita"] },
+      ingredients: [
+        { key: "red-lentils", item: "Dry red lentils, rinsed", amount: "¾ cup" },
+        { key: "brown-rice", item: "Cooked brown rice", amount: "2 cups" },
+        { key: "canned-tomatoes", item: "Diced tomatoes", amount: "1 can (14.5 oz)" },
+        { key: "spinach", item: "Baby spinach", amount: "3 cups" },
+        { key: "onion", item: "Diced onion", amount: "½ medium" },
+        { key: "garlic", item: "Minced garlic", amount: "2 cloves" },
+        { key: "ginger", item: "Grated ginger", amount: "1 Tbsp" },
+        { key: "broth", item: "Lower-sodium vegetable broth", amount: "2½ cups" },
+        { key: "curry-powder", item: "Curry powder", amount: "2 tsp" },
+        { key: "cumin", item: "Ground cumin", amount: "½ tsp" },
+        { key: "olive-oil", item: "Oil", amount: "2 tsp" },
+      ],
+      steps: [
+        "Heat the oil in a saucepan and soften the onion for 4 minutes.",
+        "Add the garlic, ginger, curry powder, and cumin; stir for 30 seconds.",
+        "Add the lentils, tomatoes, and broth; simmer uncovered for 15–18 minutes.",
+        "Stir in the spinach until wilted, adding water if the dal is thicker than you like.",
+        "Serve over warm brown rice.",
+      ],
+      substitutions: ["Use frozen spinach instead of fresh.", "Serve with quinoa or whole-grain flatbread instead of rice."],
+      whyBalanced: "Lentils contribute plant protein and fiber, brown rice adds a filling whole grain, and tomatoes and spinach add vegetables.",
+    },
+    {
+      id: "chickpea-cauliflower-curry",
+      cuisine: "indian",
+      title: "Chickpea cauliflower tomato curry",
+      description: "A simple pantry-friendly curry with tender cauliflower and a lightly creamy sauce.",
+      timeMinutes: 30,
+      servings: 2,
+      matchKeys: ["chickpeas", "cauliflower", "canned-tomatoes", "quinoa"],
+      ingredientAlternatives: { cauliflower: ["broccoli"], quinoa: ["brown-rice"] },
+      ingredients: [
+        { key: "chickpeas", item: "Drained chickpeas", amount: "1 can (15 oz)" },
+        { key: "cauliflower", item: "Cauliflower florets", amount: "3 cups" },
+        { key: "quinoa", item: "Cooked quinoa", amount: "2 cups" },
+        { key: "canned-tomatoes", item: "Diced tomatoes", amount: "1 can (14.5 oz)" },
+        { key: "light-coconut-milk", item: "Light coconut milk", amount: "½ cup" },
+        { key: "onion", item: "Diced onion", amount: "½ medium" },
+        { key: "garlic", item: "Minced garlic", amount: "2 cloves" },
+        { key: "ginger", item: "Grated ginger", amount: "1 Tbsp" },
+        { key: "curry-powder", item: "Curry powder", amount: "2 tsp" },
+        { key: "olive-oil", item: "Oil", amount: "2 tsp" },
+        { key: "water", item: "Water", amount: "½ cup" },
+      ],
+      steps: [
+        "Heat the oil in a deep skillet and cook the onion for 4–5 minutes.",
+        "Add the garlic, ginger, and curry powder; stir for 30 seconds.",
+        "Add the cauliflower, tomatoes, coconut milk, and water; cover and simmer for 10 minutes.",
+        "Stir in the chickpeas and simmer uncovered until the cauliflower is tender, about 6 minutes.",
+        "Serve over warm quinoa.",
+      ],
+      substitutions: ["Use broccoli or frozen cauliflower florets.", "Use brown rice instead of quinoa."],
+      whyBalanced: "Chickpeas and quinoa provide protein and fiber, while cauliflower and tomatoes add a generous vegetable base.",
+    },
+    {
+      id: "yogurt-spiced-chicken-tray",
+      cuisine: "indian",
+      title: "Yogurt-spiced chicken and vegetable tray",
+      description: "Tangy spiced chicken roasted with sweet potato and green beans on one pan.",
+      timeMinutes: 45,
+      servings: 2,
+      matchKeys: ["chicken", "plain-yogurt", "sweet-potato", "green-beans"],
+      ingredientAlternatives: { chicken: ["tofu"], "green-beans": ["cauliflower", "broccoli"] },
+      ingredients: [
+        { key: "chicken", item: "Boneless chicken pieces", amount: "10 oz" },
+        { key: "plain-yogurt", item: "Plain yogurt", amount: "½ cup" },
+        { key: "sweet-potato", item: "Diced sweet potato", amount: "1 large" },
+        { key: "green-beans", item: "Trimmed green beans", amount: "2 cups" },
+        { key: "lemon", item: "Lemon", amount: "1" },
+        { key: "olive-oil", item: "Oil", amount: "1 Tbsp" },
+        { key: "curry-powder", item: "Curry powder", amount: "2 tsp" },
+        { key: "cumin", item: "Ground cumin", amount: "½ tsp" },
+        { key: "garlic", item: "Minced garlic", amount: "1 clove" },
+        { key: "salt", item: "Salt", amount: "To taste" },
+      ],
+      steps: [
+        "Heat the oven to 425°F and line a sheet pan.",
+        "Mix the yogurt, curry powder, cumin, garlic, half the lemon juice, and a pinch of salt; coat the chicken.",
+        "Toss the sweet potato with half the oil and roast for 10 minutes.",
+        "Add the chicken and green beans, drizzle the beans with the remaining oil, and roast 18–22 minutes until the thickest chicken pieces reach 165°F.",
+        "Finish with the remaining lemon juice.",
+      ],
+      substitutions: ["For tofu, coat it in the yogurt-spice mixture and roast until browned; no poultry temperature is needed.", "Use cauliflower or broccoli instead of green beans."],
+      whyBalanced: "Chicken and yogurt contribute protein, sweet potato provides a hearty carbohydrate, and green beans add a substantial vegetable serving.",
+    },
+    {
+      id: "chicken-shawarma-quinoa-bowls",
+      cuisine: "middle-eastern",
+      title: "Chicken shawarma-inspired quinoa bowls",
+      description: "Spiced skillet chicken with quinoa, chopped salad, and lemony yogurt sauce.",
+      timeMinutes: 25,
+      servings: 2,
+      matchKeys: ["chicken", "quinoa", "cucumber", "tomato", "lettuce", "plain-yogurt"],
+      ingredientAlternatives: { chicken: ["chickpeas", "tofu"], quinoa: ["brown-rice", "whole-grain-pita"] },
+      ingredients: [
+        { key: "chicken", item: "Chicken cut into strips", amount: "8 oz" },
+        { key: "quinoa", item: "Cooked quinoa", amount: "2 cups" },
+        { key: "cucumber", item: "Chopped cucumber", amount: "1 cup" },
+        { key: "tomato", item: "Chopped tomato", amount: "1 cup" },
+        { key: "lettuce", item: "Chopped lettuce", amount: "2 cups" },
+        { key: "plain-yogurt", item: "Plain yogurt", amount: "½ cup" },
+        { key: "tahini", item: "Tahini", amount: "1 Tbsp" },
+        { key: "lemon", item: "Lemon", amount: "1" },
+        { key: "olive-oil", item: "Olive oil", amount: "2 tsp" },
+        { key: "cumin", item: "Ground cumin", amount: "1 tsp" },
+        { key: "paprika", item: "Paprika", amount: "1 tsp" },
+        { key: "garlic-powder", item: "Garlic powder", amount: "½ tsp" },
+      ],
+      steps: [
+        "Toss the chicken with the oil, cumin, paprika, and garlic powder.",
+        "Cook in a hot skillet for 6–8 minutes, stirring occasionally, until the thickest chicken pieces reach 165°F.",
+        "Mix the yogurt, tahini, and juice from half the lemon, thinning with water if needed.",
+        "Divide the quinoa, lettuce, cucumber, tomato, and chicken between bowls.",
+        "Drizzle with sauce and serve with the remaining lemon.",
+      ],
+      substitutions: ["For chickpeas, skip the chicken-cooking step and warm them in the spices; for tofu, cook until browned.", "Use brown rice or whole-grain pita instead of quinoa."],
+      whyBalanced: "Chicken and yogurt add protein, quinoa contributes fiber-rich carbohydrate, and the fresh vegetables supply crunch and variety.",
+    },
+    {
+      id: "quick-mujaddara-bowls",
+      cuisine: "middle-eastern",
+      title: "Quick mujaddara-inspired bowls",
+      description: "Lentils and brown rice topped with deeply browned onion and a fresh cucumber-tomato salad.",
+      timeMinutes: 30,
+      servings: 2,
+      matchKeys: ["brown-lentils", "brown-rice", "onion", "cucumber", "tomato"],
+      ingredientAlternatives: { "brown-rice": ["quinoa"] },
+      ingredients: [
+        { key: "brown-lentils", item: "Cooked brown or green lentils", amount: "1½ cups" },
+        { key: "brown-rice", item: "Cooked brown rice", amount: "2 cups" },
+        { key: "onion", item: "Thinly sliced onions", amount: "2 medium" },
+        { key: "cucumber", item: "Chopped cucumber", amount: "1 cup" },
+        { key: "tomato", item: "Chopped tomato", amount: "1 cup" },
+        { key: "plain-yogurt", item: "Plain yogurt", amount: "½ cup, optional" },
+        { key: "olive-oil", item: "Olive oil", amount: "1½ Tbsp" },
+        { key: "cumin", item: "Ground cumin", amount: "½ tsp" },
+        { key: "lemon", item: "Lemon", amount: "½" },
+        { key: "salt-pepper", item: "Salt and pepper", amount: "To taste" },
+      ],
+      steps: [
+        "Heat the oil in a skillet and cook the onions over medium-low heat for 15–20 minutes, stirring often, until deeply browned.",
+        "Warm the lentils and rice together with cumin, salt, and pepper.",
+        "Toss the cucumber and tomato with lemon juice.",
+        "Divide the rice-lentil mixture between bowls and top with the onions.",
+        "Add the salad and yogurt if using.",
+      ],
+      substitutions: ["Use canned lentils for the fastest version; drain and rinse them first.", "Use quinoa instead of brown rice."],
+      whyBalanced: "Lentils offer plant protein and fiber, brown rice provides whole-grain carbohydrate, and the salad adds fresh vegetables.",
+    },
+    {
+      id: "baked-chickpea-pita-patties",
+      cuisine: "middle-eastern",
+      title: "Baked chickpea pita patties",
+      description: "Easy baked chickpea patties tucked into whole-grain pita with salad and tahini yogurt.",
+      timeMinutes: 30,
+      servings: 2,
+      matchKeys: ["chickpeas", "eggs", "oats", "whole-grain-pita", "lettuce", "tomato", "cucumber"],
+      ingredientAlternatives: { "whole-grain-pita": ["brown-rice"] },
+      ingredients: [
+        { key: "chickpeas", item: "Drained chickpeas", amount: "1 can (15 oz)" },
+        { key: "eggs", item: "Egg", amount: "1" },
+        { key: "oats", item: "Rolled oats", amount: "¼ cup" },
+        { key: "parsley", item: "Chopped parsley", amount: "¼ cup" },
+        { key: "garlic", item: "Minced garlic", amount: "1 clove" },
+        { key: "cumin", item: "Ground cumin", amount: "1 tsp" },
+        { key: "whole-grain-pita", item: "Whole-grain pitas", amount: "2" },
+        { key: "lettuce", item: "Chopped lettuce", amount: "2 cups" },
+        { key: "tomato", item: "Chopped tomato", amount: "1" },
+        { key: "cucumber", item: "Chopped cucumber", amount: "½" },
+        { key: "plain-yogurt", item: "Plain yogurt", amount: "½ cup" },
+        { key: "tahini", item: "Tahini", amount: "1 Tbsp" },
+        { key: "lemon", item: "Lemon juice", amount: "1 Tbsp" },
+        { key: "olive-oil", item: "Olive oil", amount: "2 tsp" },
+      ],
+      steps: [
+        "Heat the oven to 425°F and lightly oil a lined baking sheet.",
+        "Mash the chickpeas with the egg, oats, parsley, garlic, and cumin until the mixture holds together.",
+        "Shape into six small patties, brush with oil, and bake for 16–18 minutes, flipping halfway, until the centers reach 160°F.",
+        "Mix the yogurt, tahini, and lemon juice.",
+        "Fill the pitas with lettuce, tomato, cucumber, patties, and sauce.",
+      ],
+      substitutions: ["For an egg-free version, use 3 tablespoons chickpea liquid and bake until the patties are firm and browned rather than using the egg temperature.", "Serve the patties over brown rice if pita is unavailable."],
+      whyBalanced: "Chickpeas add protein and fiber, whole-grain pita supplies carbohydrate, and the salad creates a vegetable-forward meal.",
+    },
+    {
+      id: "turkey-black-bean-chili",
+      cuisine: "comfort",
+      title: "Veggie-loaded turkey and black bean chili",
+      description: "A weeknight chili packed with turkey, beans, peppers, tomatoes, and corn.",
+      timeMinutes: 30,
+      servings: 2,
+      matchKeys: ["ground-turkey", "black-beans", "canned-tomatoes", "bell-pepper", "onion", "corn"],
+      ingredientAlternatives: { "ground-turkey": ["pinto-beans", "white-beans", "chickpeas", "brown-lentils"] },
+      ingredients: [
+        { key: "ground-turkey", item: "Lean ground turkey", amount: "8 oz" },
+        { key: "black-beans", item: "Drained black beans", amount: "1 can (15 oz)" },
+        { key: "canned-tomatoes", item: "Diced tomatoes", amount: "1 can (14.5 oz)" },
+        { key: "bell-pepper", item: "Diced bell pepper", amount: "1" },
+        { key: "onion", item: "Diced onion", amount: "½ medium" },
+        { key: "corn", item: "Corn", amount: "1 cup" },
+        { key: "water", item: "Lower-sodium broth or water", amount: "1 cup" },
+        { key: "olive-oil", item: "Oil", amount: "2 tsp" },
+        { key: "chili-powder", item: "Chili powder", amount: "1 Tbsp" },
+        { key: "cumin", item: "Ground cumin", amount: "1 tsp" },
+      ],
+      steps: [
+        "Heat the oil in a pot and cook the turkey, breaking it apart, until it reaches 165°F on a food thermometer.",
+        "Add the onion and pepper; cook for 4–5 minutes.",
+        "Stir in the chili powder and cumin for 30 seconds.",
+        "Add the beans, tomatoes, corn, and broth; simmer uncovered for 15 minutes.",
+        "Taste, adjust the seasoning, and serve.",
+      ],
+      substitutions: ["For a meatless version, skip the turkey step, start with the onion and pepper, and add extra beans or cooked lentils with the canned beans.", "Use frozen peppers and corn to avoid chopping."],
+      whyBalanced: "Turkey and beans provide protein, beans add fiber, and several vegetables are built directly into the chili.",
+    },
+    {
+      id: "creamy-chicken-broccoli-pasta",
+      cuisine: "comfort",
+      title: "Creamy chicken broccoli pasta",
+      description: "A lighter creamy pasta made with plain yogurt, Parmesan, chicken, and plenty of broccoli.",
+      timeMinutes: 30,
+      servings: 2,
+      matchKeys: ["chicken", "whole-wheat-pasta", "broccoli", "plain-yogurt"],
+      ingredientAlternatives: { chicken: ["white-beans"] },
+      ingredients: [
+        { key: "chicken", item: "Diced chicken", amount: "8 oz" },
+        { key: "whole-wheat-pasta", item: "Whole-wheat pasta", amount: "5 oz dry" },
+        { key: "broccoli", item: "Small broccoli florets", amount: "3 cups" },
+        { key: "plain-yogurt", item: "Plain yogurt", amount: "½ cup" },
+        { key: "parmesan", item: "Grated Parmesan", amount: "¼ cup" },
+        { key: "broth", item: "Lower-sodium broth", amount: "½ cup" },
+        { key: "garlic", item: "Minced garlic", amount: "2 cloves" },
+        { key: "olive-oil", item: "Olive oil", amount: "2 tsp" },
+        { key: "black-pepper", item: "Black pepper", amount: "¼ tsp" },
+      ],
+      steps: [
+        "Cook the pasta; add the broccoli during the final 3 minutes, then drain.",
+        "Heat the oil in a skillet and cook the chicken until browned and the thickest pieces reach 165°F.",
+        "Add the garlic and broth and simmer for 2 minutes.",
+        "Remove the skillet from the heat, then stir in the yogurt and Parmesan.",
+        "Add the pasta and broccoli, toss until coated, and season with black pepper.",
+      ],
+      substitutions: ["For white beans, skip the chicken-cooking step and add drained beans with the broth.", "Use frozen broccoli; add it during the final 2 minutes of pasta cooking."],
+      whyBalanced: "Chicken and yogurt add protein, whole-wheat pasta contributes fiber-rich carbohydrate, and broccoli makes vegetables a major part of the dish.",
+    },
+    {
+      id: "lentil-shepherds-pie",
+      cuisine: "comfort",
+      title: "Vegetable lentil shepherd’s pie",
+      description: "Savory lentils and vegetables under a fluffy potato topping.",
+      timeMinutes: 55,
+      servings: 2,
+      matchKeys: ["brown-lentils", "white-potato", "frozen-mixed-vegetables", "onion"],
+      ingredientAlternatives: { "white-potato": ["sweet-potato"] },
+      ingredients: [
+        { key: "brown-lentils", item: "Cooked brown or green lentils", amount: "1½ cups" },
+        { key: "white-potato", item: "Peeled, cubed potatoes", amount: "1 lb" },
+        { key: "frozen-mixed-vegetables", item: "Frozen mixed vegetables", amount: "2 cups" },
+        { key: "onion", item: "Diced onion", amount: "½ medium" },
+        { key: "broth", item: "Lower-sodium vegetable broth", amount: "1 cup" },
+        { key: "tomato-paste", item: "Tomato paste", amount: "1 Tbsp" },
+        { key: "milk", item: "Milk or unsweetened plant milk", amount: "¼ cup" },
+        { key: "olive-oil", item: "Olive oil", amount: "2 tsp" },
+        { key: "thyme", item: "Dried thyme", amount: "1 tsp" },
+        { key: "salt-pepper", item: "Salt and pepper", amount: "To taste" },
+      ],
+      steps: [
+        "Heat the oven to 425°F and boil the potatoes until tender, about 12–15 minutes.",
+        "Drain and mash the potatoes with the milk, half the oil, salt, and pepper.",
+        "Cook the onion in the remaining oil for 4 minutes; add the vegetables, lentils, tomato paste, thyme, and broth.",
+        "Simmer until slightly thickened, then transfer to a small baking dish and spread the potatoes on top.",
+        "Bake for 15 minutes, then broil briefly if you want a browned top.",
+      ],
+      substitutions: ["Use sweet potato for all or part of the topping.", "Use canned lentils; drain and rinse them first."],
+      whyBalanced: "Lentils supply plant protein and fiber, potatoes provide a satisfying carbohydrate, and mixed vegetables add variety in every serving.",
+    },
+  ],
+};
+
+
 document.documentElement.classList.add("js");
 
 const mealIdeas = {
@@ -2814,6 +4845,12 @@ const mealIdeas = {
   },
 };
 
+const generatorData = globalThis.WHAT_TO_EAT_DATA ?? {
+  cuisines: [],
+  ingredientGroups: [],
+  recipes: [],
+};
+
 const state = {
   meal: "breakfast",
   preference: "quick",
@@ -2839,7 +4876,7 @@ menuButton?.addEventListener("click", () => {
   siteNav.classList.toggle("is-open", willOpen);
 });
 
-siteNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+siteNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => closeMenu()));
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") closeMenu(true);
@@ -2859,13 +4896,15 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 const mealTabs = [...document.querySelectorAll("[data-meal]")];
 const preferenceButtons = [...document.querySelectorAll("[data-preference]")];
 const resultPanel = document.querySelector(".meal-result");
+let mealRenderTimeout;
 
 function renderMeal() {
   const idea = mealIdeas[state.meal][state.preference];
   if (!idea || !resultPanel) return;
 
+  window.clearTimeout(mealRenderTimeout);
   resultPanel.classList.add("is-changing");
-  window.setTimeout(() => {
+  mealRenderTimeout = window.setTimeout(() => {
     resultPanel.querySelector("[data-result-icon]").textContent = idea.icon;
     resultPanel.querySelector("[data-result-meta]").textContent = idea.meta;
     resultPanel.querySelector("[data-result-title]").textContent = idea.title;
@@ -2919,6 +4958,575 @@ preferenceButtons.forEach((button) => {
   });
 });
 
+const generatorState = {
+  mode: "cuisine",
+  selectedCuisine: null,
+  selectedIngredients: new Set(),
+  lastRecipeId: null,
+  currentRecipe: null,
+};
+
+const generatorTabs = [...document.querySelectorAll("[data-generator-tab]")];
+const generatorPanels = [...document.querySelectorAll("[data-generator-panel]")];
+const cuisineInputs = [...document.querySelectorAll('input[name="cuisine"]')];
+const generateCuisineButton = document.querySelector("[data-generate-cuisine]");
+const ingredientOptionsContainer = document.querySelector("[data-ingredient-options]");
+const ingredientSearch = document.querySelector("[data-ingredient-search]");
+const ingredientSearchStatus = document.querySelector("[data-ingredient-search-status]");
+const selectedCount = document.querySelector("[data-selected-count]");
+const clearIngredientsButton = document.querySelector("[data-clear-ingredients]");
+const matchIngredientsButton = document.querySelector("[data-match-ingredients]");
+const generatorOutput = document.querySelector("[data-generator-output]");
+const generatorStatus = document.querySelector("[data-generator-status]");
+
+const ingredientLabelMap = new Map(
+  generatorData.ingredientGroups.flatMap((group) => group.items.map((item) => [item.key, item.label])),
+);
+const pickerKeySet = new Set(ingredientLabelMap.keys());
+const assumedPantryKeys = new Set(["water", "olive-oil", "neutral-oil", "salt", "pepper", "black-pepper", "salt-pepper"]);
+const cuisineMap = new Map(generatorData.cuisines.map((cuisine) => [cuisine.id, cuisine]));
+
+function escapeHTML(value) {
+  return String(value).replace(
+    /[&<>"']/g,
+    (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[character],
+  );
+}
+
+function selectGeneratorMode(tab, shouldFocus = false) {
+  const mode = tab.dataset.generatorTab;
+  const isAlreadyActive = generatorState.mode === mode && tab.getAttribute("aria-selected") === "true";
+  if (isAlreadyActive) {
+    if (shouldFocus) tab.focus();
+    return;
+  }
+  generatorState.mode = mode;
+  generatorTabs.forEach((button) => {
+    const isActive = button === tab;
+    button.setAttribute("aria-selected", String(isActive));
+    button.tabIndex = isActive ? 0 : -1;
+  });
+  generatorPanels.forEach((panel) => {
+    panel.hidden = panel.dataset.generatorPanel !== mode;
+  });
+  renderGeneratorEmpty(mode);
+  if (shouldFocus) tab.focus();
+}
+
+generatorTabs.forEach((tab, index) => {
+  tab.addEventListener("click", () => selectGeneratorMode(tab));
+  tab.addEventListener("keydown", (event) => {
+    if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    let nextIndex = index;
+    if (event.key === "ArrowRight") nextIndex = (index + 1) % generatorTabs.length;
+    if (event.key === "ArrowLeft") nextIndex = (index - 1 + generatorTabs.length) % generatorTabs.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = generatorTabs.length - 1;
+    selectGeneratorMode(generatorTabs[nextIndex], true);
+  });
+});
+
+cuisineInputs.forEach((input) => {
+  input.addEventListener("change", () => {
+    generatorState.selectedCuisine = input.value;
+    if (generateCuisineButton) generateCuisineButton.disabled = false;
+    if (generatorState.mode === "cuisine") renderGeneratorEmpty("cuisine");
+  });
+});
+
+const initiallyCheckedCuisine = cuisineInputs.find((input) => input.checked);
+if (initiallyCheckedCuisine) {
+  generatorState.selectedCuisine = initiallyCheckedCuisine.value;
+  if (generateCuisineButton) generateCuisineButton.disabled = false;
+}
+
+function renderIngredientPicker() {
+  if (!ingredientOptionsContainer) return;
+  ingredientOptionsContainer.innerHTML = generatorData.ingredientGroups
+    .map(
+      (group) => `
+        <section class="ingredient-group" role="group" aria-labelledby="ingredient-group-${escapeHTML(group.id)}-label" data-ingredient-group="${escapeHTML(group.id)}">
+          <h4 id="ingredient-group-${escapeHTML(group.id)}-label">${escapeHTML(group.label)}</h4>
+          <div class="ingredient-options-grid">
+            ${group.items
+              .map(
+                (item) => `
+                  <label class="ingredient-option" data-ingredient-label="${escapeHTML(item.label.toLowerCase())}">
+                    <input type="checkbox" value="${escapeHTML(item.key)}" />
+                    <span>${escapeHTML(item.label)}</span>
+                  </label>`,
+              )
+              .join("")}
+          </div>
+        </section>`,
+    )
+    .join("");
+
+  ingredientOptionsContainer.addEventListener("change", (event) => {
+    const checkbox = event.target.closest('input[type="checkbox"]');
+    if (!checkbox) return;
+    if (checkbox.checked) generatorState.selectedIngredients.add(checkbox.value);
+    else generatorState.selectedIngredients.delete(checkbox.value);
+    updateIngredientToolbar();
+    if (generatorState.mode === "ingredients") renderGeneratorEmpty("ingredients");
+  });
+}
+
+function updateIngredientToolbar() {
+  const count = generatorState.selectedIngredients.size;
+  if (selectedCount) selectedCount.textContent = `${count} ingredient${count === 1 ? "" : "s"} selected`;
+  if (clearIngredientsButton) clearIngredientsButton.disabled = count === 0;
+  if (matchIngredientsButton) matchIngredientsButton.disabled = count < 2;
+}
+
+function filterIngredientOptions(query) {
+  if (!ingredientOptionsContainer) return;
+  const normalizedQuery = query.trim().toLowerCase();
+  const options = [...ingredientOptionsContainer.querySelectorAll(".ingredient-option")];
+  options.forEach((option) => {
+    option.classList.toggle("is-filtered-out", !option.dataset.ingredientLabel.includes(normalizedQuery));
+  });
+  ingredientOptionsContainer.querySelectorAll(".ingredient-group").forEach((group) => {
+    const hasVisibleOption = [...group.querySelectorAll(".ingredient-option")].some(
+      (option) => !option.classList.contains("is-filtered-out"),
+    );
+    group.classList.toggle("is-empty", !hasVisibleOption);
+  });
+  const visibleCount = options.filter((option) => !option.classList.contains("is-filtered-out")).length;
+  const hasAnyVisible = visibleCount > 0;
+  if (ingredientSearchStatus) {
+    ingredientSearchStatus.textContent = hasAnyVisible
+      ? `${visibleCount} ingredient${visibleCount === 1 ? "" : "s"} shown`
+      : "No ingredients match that search.";
+  }
+  ingredientOptionsContainer.querySelector(".ingredient-no-results")?.remove();
+  if (!hasAnyVisible) {
+    ingredientOptionsContainer.insertAdjacentHTML(
+      "beforeend",
+      '<p class="ingredient-no-results">No ingredients match that search.</p>',
+    );
+  }
+}
+
+ingredientSearch?.addEventListener("input", () => filterIngredientOptions(ingredientSearch.value));
+
+clearIngredientsButton?.addEventListener("click", () => {
+  ingredientSearch?.focus();
+  generatorState.selectedIngredients.clear();
+  ingredientOptionsContainer?.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+  updateIngredientToolbar();
+  renderGeneratorEmpty("ingredients");
+});
+
+function renderGeneratorEmpty(mode) {
+  if (!generatorOutput) return;
+  const isCuisineMode = mode === "cuisine";
+  const ingredientCount = generatorState.selectedIngredients.size;
+  const hasIngredients = ingredientCount > 0;
+  const hasEnoughIngredients = ingredientCount >= 2;
+  generatorOutput.innerHTML = `
+    <div class="generator-empty" data-generator-empty>
+      <div class="empty-bowl" aria-hidden="true"><span></span></div>
+      <p class="kicker">${isCuisineMode ? "Your next meal starts here" : "Your kitchen has possibilities"}</p>
+      <h3>${
+        isCuisineMode
+          ? "Choose a cuisine, then we’ll do the deciding."
+          : hasEnoughIngredients
+            ? `Your ${ingredientCount} selected ingredients are ready.`
+            : hasIngredients
+              ? "Add at least one more ingredient."
+            : "Choose a few ingredients to see your closest matches."
+      }</h3>
+      <p>${
+        isCuisineMode
+          ? "No scrolling through hundreds of recipes. Just one practical place to start."
+          : hasEnoughIngredients
+            ? "Choose “Find my closest meals” to see up to three recipes."
+            : hasIngredients
+              ? "Two ingredients help us find a closer idea. You may still need a few items."
+            : "We’ll show the closest meal ideas and exactly what else you may need."
+      }</p>
+    </div>`;
+  generatorState.currentRecipe = null;
+  if (generatorStatus) generatorStatus.textContent = "";
+}
+
+function getCuisineRecipePool() {
+  if (generatorState.selectedCuisine === "surprise") return [...generatorData.recipes];
+  return generatorData.recipes.filter((recipe) => recipe.cuisine === generatorState.selectedCuisine);
+}
+
+function chooseDifferentRecipe(recipes) {
+  const available = recipes.length > 1 ? recipes.filter((recipe) => recipe.id !== generatorState.lastRecipeId) : recipes;
+  return available[Math.floor(Math.random() * available.length)];
+}
+
+function cuisineDetails(recipe) {
+  return cuisineMap.get(recipe.cuisine) ?? { label: "Balanced meal", icon: "✦" };
+}
+
+function selectedIngredientSatisfies(recipe, ingredientKey) {
+  if (generatorState.selectedIngredients.has(ingredientKey)) return true;
+  return (recipe.ingredientAlternatives?.[ingredientKey] ?? []).some((key) =>
+    generatorState.selectedIngredients.has(key),
+  );
+}
+
+function selectedAlternativeFor(recipe, ingredientKey) {
+  if (generatorState.selectedIngredients.has(ingredientKey)) return undefined;
+  return (recipe.ingredientAlternatives?.[ingredientKey] ?? []).find((key) =>
+    generatorState.selectedIngredients.has(key),
+  );
+}
+
+function selectedSubstitutionsForRecipe(recipe) {
+  if (generatorState.mode !== "ingredients") return [];
+  return recipe.matchKeys.flatMap((ingredientKey) => {
+    const alternativeKey = selectedAlternativeFor(recipe, ingredientKey);
+    if (!alternativeKey) return [];
+    const baseIngredient = recipe.ingredients.find((ingredient) => ingredient.key === ingredientKey);
+    return [
+      {
+        base: baseIngredient?.item ?? ingredientLabelMap.get(ingredientKey) ?? ingredientKey.replaceAll("-", " "),
+        alternative: ingredientLabelMap.get(alternativeKey) ?? alternativeKey.replaceAll("-", " "),
+      },
+    ];
+  });
+}
+
+function ingredientStatus(recipe, ingredient) {
+  if (generatorState.mode !== "ingredients") return { className: "", symbol: "•", label: "Ingredient" };
+  if (generatorState.selectedIngredients.has(ingredient.key)) {
+    return { className: "is-have", symbol: "✓", label: "You selected this ingredient" };
+  }
+  const selectedAlternative = selectedAlternativeFor(recipe, ingredient.key);
+  if (selectedAlternative) {
+    const alternativeLabel = ingredientLabelMap.get(selectedAlternative) ?? selectedAlternative.replaceAll("-", " ");
+    return { className: "is-substitute", symbol: "↔", label: `Use your selected substitute: ${alternativeLabel}` };
+  }
+  if (assumedPantryKeys.has(ingredient.key)) {
+    return { className: "", symbol: "•", label: "Assumed pantry basic" };
+  }
+  if (/optional/i.test(ingredient.amount)) {
+    return { className: "", symbol: "•", label: "Optional ingredient" };
+  }
+  const label = recipe.matchKeys.includes(ingredient.key)
+    ? "Main ingredient still needed"
+    : "Additional ingredient still needed";
+  return { className: "is-needed", symbol: "+", label };
+}
+
+function recipeDetailsMarkup(recipe) {
+  const selectedSubstitutions = selectedSubstitutionsForRecipe(recipe);
+  return `
+    <div class="recipe-details-grid">
+      <section>
+        <h4 class="recipe-detail-title"><span aria-hidden="true">1</span> What you’ll need</h4>
+        <ul class="generated-ingredient-list">
+          ${recipe.ingredients
+            .map((ingredient) => {
+              const status = ingredientStatus(recipe, ingredient);
+              const selectedAlternative = selectedAlternativeFor(recipe, ingredient.key);
+              const ingredientCopy = selectedAlternative
+                ? `<span class="ingredient-swap-copy"><strong>${escapeHTML(ingredientLabelMap.get(selectedAlternative) ?? selectedAlternative.replaceAll("-", " "))}</strong><small>Selected instead of ${escapeHTML(ingredient.amount)} ${escapeHTML(ingredient.item)}</small></span>`
+                : `<span><strong>${escapeHTML(ingredient.amount)}</strong> ${escapeHTML(ingredient.item)}</span>`;
+              return `<li class="${status.className}">
+                <span class="ingredient-status" aria-hidden="true">${status.symbol}</span>
+                <span><span class="sr-only">${escapeHTML(status.label)}: </span>${ingredientCopy}</span>
+              </li>`;
+            })
+            .join("")}
+        </ul>
+      </section>
+      <section>
+        <h4 class="recipe-detail-title"><span aria-hidden="true">2</span> How to make it</h4>
+        ${
+          selectedSubstitutions.length
+            ? `<div class="selected-substitution-note" role="note"><strong>Use your selected swaps</strong><span>${escapeHTML(selectedSubstitutions.map((swap) => `${swap.alternative} for ${swap.base}`).join("; "))}. Apply these changes while following the directions: ${recipe.substitutions.map(escapeHTML).join(" ")}</span></div>`
+            : ""
+        }
+        <ol class="generated-step-list">
+          ${recipe.steps.map((step) => `<li>${escapeHTML(step)}</li>`).join("")}
+        </ol>
+      </section>
+    </div>
+    <div class="recipe-notes">
+      <div class="recipe-note"><strong>Why it’s balanced</strong>${escapeHTML(recipe.whyBalanced)}</div>
+      <div class="recipe-note"><strong>Easy substitutions</strong>${recipe.substitutions.map(escapeHTML).join(" ")}</div>
+    </div>`;
+}
+
+function recipeText(recipe) {
+  const cuisine = cuisineDetails(recipe);
+  const ingredients = recipe.ingredients.map((ingredient) => `- ${ingredient.amount} ${ingredient.item}`).join("\n");
+  const steps = recipe.steps.map((step, index) => `${index + 1}. ${step}`).join("\n");
+  const selectedSubstitutions = selectedSubstitutionsForRecipe(recipe);
+  const selectedSwapText = selectedSubstitutions.length
+    ? `\n\nYOUR SELECTED SWAPS\n${selectedSubstitutions.map((swap) => `- ${swap.alternative} for ${swap.base}`).join("\n")}`
+    : "";
+  return `${recipe.title}\n${cuisine.label} · ${recipe.timeMinutes} minutes · Serves ${recipe.servings}\n\n${recipe.description}${selectedSwapText}\n\nINGREDIENTS\n${ingredients}\n\nDIRECTIONS\n${steps}\n\nSUBSTITUTIONS\n${recipe.substitutions.join(" ")}`;
+}
+
+async function copyRecipe(recipe, statusElement, triggerButton) {
+  const text = recipeText(recipe);
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(text);
+    copied = true;
+  } catch {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.setAttribute("readonly", "");
+    textArea.style.position = "fixed";
+    textArea.style.opacity = "0";
+    document.body.append(textArea);
+    textArea.select();
+    try {
+      copied = Boolean(document.execCommand?.("copy"));
+    } catch {
+      copied = false;
+    }
+    textArea.remove();
+    triggerButton?.focus();
+  }
+  if (statusElement) statusElement.textContent = copied ? "Recipe copied." : "Copy was blocked by your browser.";
+}
+
+function focusGeneratedResult(selector) {
+  window.requestAnimationFrame(() => {
+    const heading = generatorOutput?.querySelector(selector);
+    heading?.focus({ preventScroll: true });
+    heading?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "center",
+    });
+  });
+}
+
+function renderCuisineRecipe(recipe) {
+  if (!generatorOutput || !recipe) return;
+  const cuisine = cuisineDetails(recipe);
+  const anotherLabel = generatorState.selectedCuisine === "surprise" ? "Surprise me again" : `Try another ${cuisine.label} meal`;
+  generatorState.currentRecipe = recipe;
+  generatorOutput.innerHTML = `
+    <article class="recipe-result">
+      <header class="recipe-result-header">
+        <p class="recipe-result-eyebrow"><span aria-hidden="true">${escapeHTML(cuisine.icon)}</span> Tonight’s pick · ${escapeHTML(cuisine.label)}</p>
+        <h3 tabindex="-1" data-generated-heading>${escapeHTML(recipe.title)}</h3>
+        <p class="recipe-result-description">${escapeHTML(recipe.description)}</p>
+        <div class="recipe-meta">
+          <span>${recipe.timeMinutes} minutes</span>
+          <span>Serves ${recipe.servings}</span>
+          <span>${recipe.matchKeys.length} main ingredients</span>
+        </div>
+      </header>
+      <div class="recipe-result-body">
+        ${recipeDetailsMarkup(recipe)}
+        <div class="recipe-result-actions">
+          <button class="button button-primary" type="button" data-another-recipe>${escapeHTML(anotherLabel)}</button>
+          <button class="button button-secondary" type="button" data-copy-recipe="${escapeHTML(recipe.id)}">Copy recipe</button>
+          <p class="copy-status" aria-live="polite"></p>
+        </div>
+      </div>
+    </article>`;
+  if (generatorStatus) generatorStatus.textContent = `Showing ${recipe.title}.`;
+  focusGeneratedResult("[data-generated-heading]");
+}
+
+function generateCuisineRecipe() {
+  const pool = getCuisineRecipePool();
+  if (!pool.length) return;
+  const recipe = chooseDifferentRecipe(pool);
+  generatorState.lastRecipeId = recipe.id;
+  renderCuisineRecipe(recipe);
+}
+
+generateCuisineButton?.addEventListener("click", generateCuisineRecipe);
+
+function getIngredientMatches() {
+  const selected = generatorState.selectedIngredients;
+  return generatorData.recipes
+    .map((recipe) => {
+      const mainKeySet = new Set(recipe.matchKeys);
+      const directRecipeKeys = new Set(
+        recipe.ingredients.map((ingredient) => ingredient.key).filter((key) => pickerKeySet.has(key)),
+      );
+      const extraKeys = [...directRecipeKeys].filter((key) => !mainKeySet.has(key));
+      const slots = [
+        ...recipe.matchKeys.map((key) => ({ id: `main:${key}`, key, type: "main" })),
+        ...extraKeys.map((key) => ({ id: `extra:${key}`, key, type: "extra" })),
+      ];
+      const slotAssignments = new Map();
+      const canFillSlot = (selectedKey, slot) =>
+        selectedKey === slot.key ||
+        (slot.type === "main" && (recipe.ingredientAlternatives?.[slot.key] ?? []).includes(selectedKey));
+      const assignSelectedKey = (selectedKey, visitedSlots) => {
+        for (const slot of slots) {
+          if (!canFillSlot(selectedKey, slot) || visitedSlots.has(slot.id)) continue;
+          visitedSlots.add(slot.id);
+          const previousKey = slotAssignments.get(slot.id);
+          if (!previousKey || assignSelectedKey(previousKey, visitedSlots)) {
+            slotAssignments.set(slot.id, selectedKey);
+            return true;
+          }
+        }
+        return false;
+      };
+      selected.forEach((selectedKey) => assignSelectedKey(selectedKey, new Set()));
+      const matched = [...slotAssignments.values()];
+      const matchedMain = recipe.matchKeys.filter((key) => selectedIngredientSatisfies(recipe, key));
+      const missing = recipe.matchKeys.filter((key) => !selectedIngredientSatisfies(recipe, key));
+      const matchableCount = recipe.matchKeys.length + extraKeys.length;
+      return {
+        recipe,
+        matched,
+        matchedMain,
+        missing,
+        ratio: matched.length / Math.max(matchableCount, matched.length),
+        mainRatio: matchedMain.length / recipe.matchKeys.length,
+      };
+    })
+    .filter((result) => result.matched.length >= 2 && result.matchedMain.length >= 1)
+    .sort(
+      (a, b) =>
+        b.mainRatio - a.mainRatio ||
+        b.ratio - a.ratio ||
+        b.matched.length - a.matched.length ||
+        a.missing.length - b.missing.length ||
+        a.recipe.timeMinutes - b.recipe.timeMinutes,
+    )
+    .slice(0, 3);
+}
+
+function missingIngredientNames(match) {
+  return match.missing.map((key) => ingredientLabelMap.get(key) ?? key.replaceAll("-", " "));
+}
+
+function additionalIngredientNames(match) {
+  const missingMain = new Set(match.missing);
+  return [
+    ...new Set(
+      match.recipe.ingredients
+        .filter((ingredient) => !selectedIngredientSatisfies(match.recipe, ingredient.key))
+        .filter((ingredient) => !assumedPantryKeys.has(ingredient.key))
+        .filter((ingredient) => !/optional/i.test(ingredient.amount))
+        .filter((ingredient) => !missingMain.has(ingredient.key))
+        .map((ingredient) => ingredient.item),
+    ),
+  ];
+}
+
+function matchCardMarkup(match, index) {
+  const { recipe, matched, missing } = match;
+  const cuisine = cuisineDetails(recipe);
+  const detailsId = `match-details-${recipe.id}`;
+  const titleId = `match-title-${recipe.id}`;
+  const isOpen = index === 0;
+  const missingNames = missingIngredientNames(match);
+  const additionalNames = additionalIngredientNames(match);
+  return `
+    <article class="match-card${isOpen ? " is-open" : ""}" aria-labelledby="${titleId}">
+      <h4 class="sr-only" id="${titleId}">${escapeHTML(recipe.title)}</h4>
+      <button class="match-toggle" type="button" aria-expanded="${isOpen}" aria-controls="${detailsId}" data-match-toggle>
+        <span class="match-toggle-copy">
+          <span>${index === 0 ? "Best match" : escapeHTML(cuisine.label)}</span>
+          <span class="match-recipe-title">${escapeHTML(recipe.title)}</span>
+          <span class="match-card-meta">
+            <span class="match-score">${matched.length} selected ingredient${matched.length === 1 ? "" : "s"} fit</span>
+            <span>${recipe.timeMinutes} min</span>
+          </span>
+        </span>
+        <span class="match-toggle-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="match-card-details" id="${detailsId}" ${isOpen ? "" : "hidden"}>
+        ${recipeDetailsMarkup(recipe)}
+        <div class="missing-summary">
+          <p><strong>${missingNames.length ? "Main ingredients to add:" : "Main ingredients:"}</strong> ${
+            missingNames.length ? escapeHTML(missingNames.join(", ")) : "You selected every main ingredient."
+          }</p>
+          ${
+            additionalNames.length
+              ? `<p><strong>Also check that you have:</strong> ${escapeHTML(additionalNames.join(", "))}</p>`
+              : ""
+          }
+        </div>
+        <div class="recipe-result-actions">
+          <button class="button button-secondary" type="button" data-copy-recipe="${escapeHTML(recipe.id)}">Copy recipe</button>
+          <p class="copy-status" aria-live="polite"></p>
+        </div>
+      </div>
+    </article>`;
+}
+
+function renderIngredientMatches() {
+  if (!generatorOutput) return;
+  const matches = getIngredientMatches();
+  if (!matches.length) {
+    generatorOutput.innerHTML = `
+      <div class="generator-empty">
+        <div class="empty-bowl" aria-hidden="true"><span></span></div>
+        <p class="kicker">No close match yet</p>
+        <h3 tabindex="-1" data-generated-heading>Try two ingredients that belong in the same meal.</h3>
+        <p>Add a protein plus a grain or vegetable—for example, chicken and brown rice, or beans and tortillas.</p>
+        <button class="button button-dark" type="button" data-browse-cuisines>Browse by cuisine instead</button>
+      </div>`;
+    if (generatorStatus) generatorStatus.textContent = "No close ingredient match found.";
+    focusGeneratedResult("[data-generated-heading]");
+    return;
+  }
+
+  generatorOutput.innerHTML = `
+    <div class="match-results">
+      <div class="match-results-heading">
+        <p class="kicker">Closest matches</p>
+        <h3 tabindex="-1" data-generated-heading>${matches.length} closest meal idea${matches.length === 1 ? "" : "s"}.</h3>
+        <p>We prioritized main ingredients, then checked the full recipe. Open any result to see what else you need.</p>
+      </div>
+      <div class="match-list">${matches.map(matchCardMarkup).join("")}</div>
+    </div>`;
+  generatorState.currentRecipe = matches[0].recipe;
+  if (generatorStatus) generatorStatus.textContent = `${matches.length} matches found. Best match: ${matches[0].recipe.title}.`;
+  focusGeneratedResult("[data-generated-heading]");
+}
+
+matchIngredientsButton?.addEventListener("click", renderIngredientMatches);
+
+generatorOutput?.addEventListener("click", async (event) => {
+  const anotherButton = event.target.closest("[data-another-recipe]");
+  if (anotherButton) {
+    generateCuisineRecipe();
+    return;
+  }
+
+  const copyButton = event.target.closest("[data-copy-recipe]");
+  if (copyButton) {
+    const recipe = generatorData.recipes.find((item) => item.id === copyButton.dataset.copyRecipe);
+    if (recipe) await copyRecipe(recipe, copyButton.parentElement.querySelector(".copy-status"), copyButton);
+    return;
+  }
+
+  const toggle = event.target.closest("[data-match-toggle]");
+  if (toggle) {
+    const details = document.getElementById(toggle.getAttribute("aria-controls"));
+    const willOpen = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(willOpen));
+    if (details) details.hidden = !willOpen;
+    toggle.closest(".match-card")?.classList.toggle("is-open", willOpen);
+    return;
+  }
+
+  if (event.target.closest("[data-browse-cuisines]")) {
+    selectGeneratorMode(generatorTabs[0], true);
+  }
+});
+
+renderIngredientPicker();
+updateIngredientToolbar();
+filterIngredientOptions(ingredientSearch?.value ?? "");
+
 document.querySelectorAll(".why-button").forEach((button) => {
   button.addEventListener("click", () => {
     const answer = button.nextElementSibling;
@@ -2959,7 +5567,7 @@ saveHabitButton?.addEventListener("click", () => {
   if (!state.habit) return;
   let wasSaved = false;
   try {
-    window.localStorage.setItem("steadyPlateHabit", state.habit);
+    window.localStorage.setItem("whatToEatHabit", state.habit);
     wasSaved = true;
   } catch {
     // The choice still works for this visit when storage is unavailable.
@@ -2973,7 +5581,7 @@ saveHabitButton?.addEventListener("click", () => {
 });
 
 try {
-  const savedHabit = window.localStorage.getItem("steadyPlateHabit");
+  const savedHabit = window.localStorage.getItem("whatToEatHabit");
   if (savedHabit && habitNames[savedHabit]) setHabit(savedHabit, true);
 } catch {
   // Storage can be blocked in private browsing; no action needed.
